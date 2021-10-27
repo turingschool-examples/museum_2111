@@ -147,19 +147,6 @@ RSpec.describe 'museum spec' do
         expect(@dmns).to respond_to(:draw_lottery_winner).with(1).argument
         expect(@dmns.draw_lottery_winner(@imax_2)).to eq("TJ").or(eq("Gabe"))
       end
-
-      it '11. Museum #announce_lottery_winner' do
-        @dmns.add_exhibit(@imax_2)
-        @tj.add_interest("IMAX2")
-        @gabe.add_interest("IMAX2")
-        @dmns.admit(@tj)
-        @dmns.admit(@gabe)
-        @dmns.admit(@morgan)
-        @dmns.stubs(:draw_lottery_winner).returns('Gabe')
-        expected = "Gabe has won the IMAX2 exhibit lottery"
-        expect(@dmns).to respond_to(:announce_lottery_winner).with(1).argument
-        expect(@dmns.announce_lottery_winner(@imax_2)).to eq(expected)
-      end
   end
 
   describe 'Iteration 4' do
