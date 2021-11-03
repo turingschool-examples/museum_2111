@@ -1,7 +1,7 @@
 require './lib/patron'
 
-RSPec.deescribe Patron do
-  let!(patron_1){Patron.new("Bob", 20)}
+RSpec.describe Patron do
+  let!(:patron_1){Patron.new("Bob", 20)}
 
   describe '#initialize' do
     it "exists" do
