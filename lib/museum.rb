@@ -23,4 +23,8 @@ class Museum
     end.flatten
     recommended
   end
+  def patrons
+    []
+
+  end
 end
