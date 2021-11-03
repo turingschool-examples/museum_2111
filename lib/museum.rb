@@ -23,11 +23,6 @@ class Museum
     exhibit_names & patron.interests
   end
 
-  # For patrons_by_exhibit_interest, this method takes no arguments and returns a Hash where each key is an Exhibit. The value associated with that Exhibit is an Array of all the Patrons that have an interest in that exhibit.
-
-# if exhibit.name == patron.interest
-  # hash[exhibit] += 1
-
   def patrons_by_exhibit_interest
     hash = Hash.new
     @exhibits.each do |exhibit|
@@ -37,7 +32,7 @@ class Museum
     all_interests = @patrons.map do |patron|
       patron.interests
     end.flatten
-
+    # mistake: supposed to add patron to array not increment a count
     hash.each do |exhibit|
       all_interests.each do |interest|
         if exhibit[0].name == interest
@@ -46,7 +41,6 @@ class Museum
       end
     end
     hash
-
   end
 
 end
