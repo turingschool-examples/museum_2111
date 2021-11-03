@@ -9,6 +9,11 @@ RSpec.describe Museum do
     @gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     @dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
     @imax = Exhibit.new({name: "IMAX",cost: 15})
+    patron_1 = Patron.new("Bob", 20)
+    @patron_1.add_interest("Dead Sea Scrolls")
+    @patron_1.add_interest("Gems and Minerals")
+    @patron_2 = Patron.new("Sally", 20)
+    @patron_2.add_interest("IMAX")
   end
 
   describe '#initialize' do
@@ -30,6 +35,18 @@ RSpec.describe Museum do
       expected = [@dmns.exhibits[0], @dmns.exhibits[1], @dmns.exhibits[2]]
 
       expect(@dmns.exhibits).to eq(expected)
+    end
+  end
+
+  describe '#recommend_exhibits' do
+    it 'will recommend exhibits matching a persons interests' do
+      expected = [@gems_and_minerals, @dead_sea_scrolls]
+
+      expect(@dmns.recommend_exhibits(@patron_1)).to eq(expected)
+
+      expected = [@imax]
+
+      expect(@dmns.recommend_exhibits(@patron_2)).to eq(expected)
     end
   end
 end
