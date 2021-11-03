@@ -1,7 +1,8 @@
 require './lib/exhibit'
 
+
 RSpec.describe Exhibit do
-  let(exhibit) { Exhibit.new({name: 'Gems and Minerals', cost: 0}) }
+  let(:exhibit) { Exhibit.new({name: 'Gems and Minerals', cost: 0}) }
 
   describe '#initialize' do
     it 'exists' do
@@ -16,5 +17,4 @@ RSpec.describe Exhibit do
       expect(exhibit.cost).to eq(0)
     end
   end
-
 end
