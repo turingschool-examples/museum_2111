@@ -29,9 +29,11 @@ class Museum
     end
   end
 
-  # def patrons_by_exhibit_interest
-  #   exhibit_patrons = Hash.new([])
-  #   @exhibits.each do |exhibit|
-  #     exhibit_patrons[exhibit]
-  # end
+  def patrons_by_exhibit_interest
+    exhibit_patrons = Hash.new([])
+    @exhibits.each do |exhibit|
+      exhibit_patrons[exhibit] = patrons_interested(exhibit.name)
+    end
+    exhibit_patrons
+  end
 end
