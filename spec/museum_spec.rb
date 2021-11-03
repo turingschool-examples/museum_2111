@@ -37,12 +37,19 @@ RSpec.describe Museum do
     it "adds interests to patrons" do
       patron_1.add_interest("Dead Sea Scrolls")
       patron_1.add_interest("Gems and Minerals")
-      expect(patron_1.intersts).to eq ["Dead Sea Scrolls", "Gems and Minerals"]
+      expect(patron_1.interests).to eq ["Dead Sea Scrolls", "Gems and Minerals"]
       patron_2.add_interest("IMAX")
-      expect(patron_2.intersts).to eq ["IMAX"]
+      expect(patron_2.interests).to eq ["IMAX"]
     end
 
     it "recommends exhibits " do
+      dmns.add_exhibit(gems_and_minerals)
+      dmns.add_exhibit(dead_sea_scrolls)
+      dmns.add_exhibit(imax)
+      patron_1.add_interest("Dead Sea Scrolls")
+      patron_1.add_interest("Gems and Minerals")
+      patron_2.add_interest("IMAX")
+
       expect(dmns.recommend_exhibits(patron_1)).to eq [dead_sea_scrolls, gems_and_minerals]
       expect(dmns.recommend_exhibits(patron_2)).to eq [imax]
     end
