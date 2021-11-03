@@ -128,6 +128,16 @@ describe Museum do
           expect(@museum.ticket_lottery_contestants(@dead_sea_scrolls)).to eq([@patron_1, @patron_3])
         end
       end
+
+      describe ' #draw_lottery_winner' do
+        it 'returns nil if no contestants are eligible' do
+          expect(@museum.draw_lottery_winner(@gems_and_minerals)).to eq(nil)
+        end
+        it 'returns one lottery winner patron' do
+          expect(@museum.draw_lottery_winner(@dead_sea_scrolls)).to be_a(Patron)
+          expect(@museum.draw_lottery_winner(@dead_sea_scrolls).length).to eq(1)
+        end
+      end
     end
   end
 end
