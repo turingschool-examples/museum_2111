@@ -95,7 +95,13 @@ describe Museum do
 
   describe '#draw_lottery_winner' do
     it 'returns a winner' do
-      expect(@dmns.draw_lottery_winner(@dead_sea_scrolls)).to eq(@patron_1).or eq(@patron_2)
+      @dmns.add_exhibit(@gems_and_minerals)
+      @dmns.add_exhibit(@dead_sea_scrolls)
+      @dmns.add_exhibit(@imax)
+      @dmns.admit(@patron_1)
+      @dmns.admit(@patron_2)
+      @dmns.admit(@patron_3)
+      expect(@dmns.draw_lottery_winner(@dead_sea_scrolls)).to eq(@patron_1).or eq(@patron_3)
     end
   end
 
