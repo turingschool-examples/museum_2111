@@ -26,4 +26,20 @@ class Museum
     @patrons << patron
   end
 
+  def patrons_by_exhibit_interest
+    patron_hash = {}
+    @exhibits.map do |exhibit|
+      @patrons.map do |patron|
+        patron.interests.map do |interest|
+          if interest == exhibit.name
+            patron_hash[exhibit] = [patron]
+          else
+          end
+        end
+      end
+    end
+    require "pry"; binding.pry
+    patron_hash
+  end
+
 end
