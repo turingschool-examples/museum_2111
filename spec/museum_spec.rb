@@ -81,4 +81,22 @@ describe Museum do
     end
   end
 
+  describe '#ticket_lottery_contestants' do
+    it 'returns an array of patrons that cannot afford an exhibit' do
+      @dmns.add_exhibit(@gems_and_minerals)
+      @dmns.add_exhibit(@dead_sea_scrolls)
+      @dmns.add_exhibit(@imax)
+      @dmns.admit(@patron_1)
+      @dmns.admit(@patron_2)
+      @dmns.admit(@patron_3)
+      expect(@dmns.ticket_lottery_contestants(@dead_sea_scrolls)).to eq([@patron_1, @patron_3])
+    end
+  end
+
+  describe '#draw_lottery_winner' do
+    it 'returns a winner' do
+      expect(@dmns.draw_lottery_winner(@dead_sea_scrolls)).to eq(@patron_1).or eq(@patron_2)
+    end
+  end
+
 end
