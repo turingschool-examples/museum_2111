@@ -10,6 +10,7 @@ RSpec.describe "Museum" do
     @imax              = Exhibit.new({name: "IMAX",cost: 15})
     @patron_1 = Patron.new("Bob", 20)
     @patron_2 = Patron.new("Sally", 20)
+    @patron_3 = Patron.new("Johnny", 5)
   end
 
   it "exists" do
@@ -19,6 +20,7 @@ RSpec.describe "Museum" do
   it "has attributes" do
     expect(@dmns.name).to eq("Denver Museum of Nature and Science")
     expect(@dmns.exhibits).to eq([])
+    expect(@dmns.patrons).to eq([])
   end
 
   it "can add exhibits" do
@@ -39,5 +41,13 @@ RSpec.describe "Museum" do
 
     expect(@dmns.recommend_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
     expect(@dmns.recommend_exhibits(@patron_2)).to eq([@imax])
+  end
+
+  it "can admit patrons" do
+     @dmns.admit(@patron_1)
+     @dmns.admit(@patron_2)
+     @dmns.admit(@patron_3)
+
+     expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patrons_3])
   end
 end
