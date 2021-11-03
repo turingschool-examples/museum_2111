@@ -27,7 +27,7 @@ RSpec.describe Museum do
       @dmns.add_exhibit(@gems_and_minerals)
       @dmns.add_exhibit(@dead_sea_scrolls)
       @dmns.add_exhibit(@imax)
-      expected = []@dmns.exhibits[0], @dmns.exhibits[1], @dmns.exhibits[2]]
+      expected = [@dmns.exhibits[0], @dmns.exhibits[1], @dmns.exhibits[2]]
 
       expect(@dmns.exhibits).to eq(expected)
     end
