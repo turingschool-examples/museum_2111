@@ -73,5 +73,9 @@ describe Museum do
             }
             expect(dmns.patrons_by_exhibit_interest).to eq(expected)
         end
+
+        it '#ticket_lottery_contestants' do 
+            expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq([patron_1, patron_3])
+        end
     end
 end
