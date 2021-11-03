@@ -28,9 +28,10 @@ class Museum
 
   def patrons_by_exhibit_interest
     patron_hash = {}
-    @exhibits.map do |exhibit|
+    @exhibits.find_all do |exhibit|
       @patrons.map do |patron|
-        patron.interests.map do |interest|
+        patron.interests.find_all do |interest|
+          #require "pry"; binding.pry
           if interest == exhibit.name
             patron_hash[exhibit] = [patron]
           else
@@ -40,6 +41,6 @@ class Museum
     end
     require "pry"; binding.pry
     patron_hash
-  end
+  end #man so close!!!!! I get a hash that doesnt repeat for its value it only takes on patron instewad of two for dead_sea_scrolls
 
 end
