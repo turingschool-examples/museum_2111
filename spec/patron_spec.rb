@@ -15,7 +15,7 @@ RSpec.describe Patron do
     expect(@patron_1.interests).to eq([])
   end
 
-  it "checks intrest after adding some interests " do
+  it "checks interests after adding some interests " do
     @patron_1.add_interest("Dead Sea Scrolls")
     @patron_1.add_interest("Gems and Minerals")
     expect(@patron_1.interests).to eq(["Dead Sea Scrolls", "Gems and Minerals"])
