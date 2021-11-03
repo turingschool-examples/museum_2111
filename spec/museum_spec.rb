@@ -70,7 +70,37 @@ RSpec.describe Museum do
 
     expect(@museum.recommend_exhibits(patron_1)).to eq(expected_one)
     expect(@museum.recommend_exhibits(patron_2)).to eq(expected_two)
+  end
 
+  it 'can return #patrons_by_exhibit_interest as a hash' do
+    gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    imax = Exhibit.new({name: "IMAX",cost: 15})
+    @museum.add_exhibit(gems_and_minerals)
+    @museum.add_exhibit(dead_sea_scrolls)
+    @museum.add_exhibit(imax)
+
+    patron_1 = Patron.new("Sally", 20)
+    patron_2 = Patron.new("Bob", 20)
+    patron_3 = Patron.new("Johnny", 5)
+
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_2.add_interest("Gems and Minerals")
+    patron_3.add_interest("Dead Sea Scrolls")
+
+    @museum.admit(patron_1)
+    @museum.admit(patron_2)
+    @museum.admit(patron_3)
+
+    expected = {
+
+      gems_and_minerals => [patron_2],
+      dead_sea_scrolls => [patron_1, patron_3],
+      imax => []
+
+    }
+
+    expect(@museum.patrons_by_exhibit_interest).to eq(expected)
   end
 
 
