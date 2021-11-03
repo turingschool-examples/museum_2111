@@ -137,9 +137,11 @@ RSpec.describe Museum do
       @patron_3.add_interest("Dead Sea Scrolls")
       @dmns.ticket_lottery_contestants(@dead_sea_scrolls)
 
+      # allow(@dead_seal_scrolls).to receive(:name).and_return("Johnny")
+      # allow(@dead_seal_scrolls).to receive(:name).and_return("Bob")
       expect(@dmns.draw_lottery_winner(@dead_sea_scrolls)).to eq("Johnny" || "Bob")
 
-      # expect(@dmns.draw_lottery_winner(@gems_and_minerals)).to eq(nil)
+      expect(@dmns.draw_lottery_winner(@gems_and_minerals)).to eq(nil)
     end
   end
 end
