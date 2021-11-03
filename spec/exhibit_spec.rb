@@ -1,7 +1,7 @@
 require './lib/patron'
 require './lib/exhibit'
 
-describe Exhbit do
+describe Exhibit do
   before(:each) do
     @exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
   end
