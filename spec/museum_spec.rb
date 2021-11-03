@@ -56,13 +56,13 @@ RSpec.describe Museum do
       @patron_2.add_interest("Dead Sea Scrolls")
       @patron_3.add_interest("Dead Sea Scrolls")
     end
-    xit "returns a hash where the key is an exhibit and values are the patrons intersted" do
+    it "returns a hash where the key is an exhibit and values are the patrons intersted" do
       @dmns.recommended_exhibits(@patron_1)
       @dmns.recommended_exhibits(@patron_2)
       @dmns.recommended_exhibits(@patron_3)
       expect(@dmns.patrons_by_exhibit_interest).to eq({
-        "Gems and Minerals" => [@patron_1],
-        "Dead Sea Scrolls"  => [@patron_1, @patron_2, @patron_3]
+        @gems_and_minerals => [@patron_1],
+        @dead_sea_scrolls  => [@patron_1, @patron_2, @patron_3]
         })
     end
   end
