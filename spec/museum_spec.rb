@@ -26,7 +26,7 @@ describe Museum do
   end
 
   describe ' methods' do
-    describe ' #add_exhibits' do
+    describe ' #add_exhibit' do
       it 'adds new exhibit to exhibits' do
         expect(@museum.exhibits).to eq([])
         @museum.add_exhibit(@gems_and_minerals)
@@ -39,6 +39,9 @@ describe Museum do
     end
     describe ' #recommend_exhibits' do
       it 'returns an array of exhibits that the patron has interest in' do
+        @museum.add_exhibit(@gems_and_minerals)
+        @museum.add_exhibit(@dead_sea_scrolls)
+        @museum.add_exhibit(@imax)
         expect(@museum.recommend_exhibits(@patron_1)).to eq([@dead_sea_scrolls, @gems_and_minerals])
         expect(@museum.recommend_exhibits(@patron_2)).to eq([@imax])
       end
