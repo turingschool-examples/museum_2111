@@ -17,14 +17,34 @@ RSpec.describe Museum do
 
   it "add exhibit" do
     dmns = Museum.new("Denver Museum of Nature and Science")
+    gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    imax = Exhibit.new({name: "IMAX",cost: 15})
     dmns.add_exhibit(gems_and_minerals)
     dmns.add_exhibit(dead_sea_scrolls)
     dmns.add_exhibit(imax)
     expect(dmns.exhibits).to eq([gems_and_minerals,dead_sea_scrolls,imax])
   end
 
-  xit "reccomend exhibit" do
+  # it "exhibit names" do
+  #   dmns = Museum.new("Denver Museum of Nature and Science")
+  #   gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+  #   dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+  #   imax = Exhibit.new({name: "IMAX",cost: 15})
+  #   dmns.add_exhibit(gems_and_minerals)
+  #   dmns.add_exhibit(dead_sea_scrolls)
+  #   dmns.add_exhibit(imax)
+  #   expect(dmns.exhibit_names).to eq(["Gems and Minerals","Dead Sea Scrolls","IMAX"])
+  # end
+
+  it "reccomend exhibit" do
     dmns = Museum.new("Denver Museum of Nature and Science")
+    gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    imax = Exhibit.new({name: "IMAX",cost: 15})
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
     patron_1 = Patron.new("Bob", 20)
     patron_2 = Patron.new("Sally", 20)
     patron_1.add_interest("Dead Sea Scrolls")
