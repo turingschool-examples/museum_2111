@@ -61,4 +61,14 @@ RSpec.describe Museum do
     patron_2.add_interest('IMAX')
     expect(patron_2.interests).to eq(['IMAX'])
   end
+
+  it 'gives recommended exhibits to patrons' do
+    dmns = Museum.new('Denver Museum of Nature and Science')
+    patron_1 = Patron.new('Bob', 20)
+    patron_1.add_interest('Dead Sea Scrolls')
+    patron_1.add_interest('Gems and Minerals')
+    gems_and_minerals = Exhibit.new({ name: 'Gems and Minerals', cost: 0 })
+    dead_sea_scrolls = Exhibit.new({ name: 'Dead Sea Scrolls', cost: 10 })
+    expect(dmns.recommend_exhibits(patron_1)).to eq([dead_sea_scrolls, gems_and_minerals])
+  end
 end
