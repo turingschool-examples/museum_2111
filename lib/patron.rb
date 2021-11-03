@@ -1,3 +1,7 @@
 class Patron
-  def initialize(name, spending_money); end
+  attr_reader :name
+
+  def initialize(name, _spending_money)
+    @name = name
+  end
 end
