@@ -9,6 +9,7 @@ RSpec.describe Museum do
   let(:patron_1) { Patron.new('Bob', 0) }
   let(:patron_2) { Patron.new('Sally', 20) }
   let(:patron_3) { Patron.new('Johnny', 5) }
+  let(:patron_4) { Patron.new('TJ', 7) }
   let(:dmns) { Museum.new('Denver Museum of Nature and Science') }
 
   describe '#initialize' do
@@ -144,5 +145,4 @@ RSpec.describe Museum do
       expect(dmns.draw_lottery_winner(gems_and_minerals)).to eq(nil)
     end
   end
-
 end
