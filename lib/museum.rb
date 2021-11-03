@@ -27,10 +27,7 @@ class Museum
   def patrons_by_exhibit_interest
     patrons_sorted = {}
     @exhibits.each do |exhibit|
-      patrons_sorted[exhibit.name] = []
-      @patrons.each do |patron|
-        patron.interests.include?(exhibit.name) ? patrons_sorted[exhibit.name] << patron : nil
-      end
+      patrons_sorted[exhibit.name] = @patrons.find_all { |patron| patron.interests.include?(exhibit.name) }
     end
     patrons_sorted
   end
