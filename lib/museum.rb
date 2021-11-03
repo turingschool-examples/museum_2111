@@ -27,4 +27,17 @@ class Museum
   def admit(patron)
     @patrons.push(patron)
   end
+  def patrons_by_exhibit_interest
+    exhibit_hash = Hash.new
+    @exhibits.each do |exhibit|
+      exhibit_hash[exhibit] = []
+      @patrons.each do |patron|
+        # require "pry"; binding.pry
+        if patron.interests == [exhibit.name]
+          exhibit_hash[exhibit] = exhibit_hash[exhibit] + patron
+        end
+      end
+    end
+    exhibit_hash
+  end
 end
