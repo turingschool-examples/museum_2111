@@ -20,4 +20,19 @@ class Museum
   def admit(patron)
     @patrons.push(patron)
   end
+
+  def patrons_by_exhibit_interest
+    interest_hash = {}
+    @exhibits.each do |exhibit|
+      @patrons.each do |patron|
+        interest_hash[exhibit] ||= []
+        if recommend_exhibits(patron).include?(exhibit)
+          interest_hash[exhibit].push(patron)
+        end
+      end
+    end
+    interest_hash
+  end
+
+  
 end
