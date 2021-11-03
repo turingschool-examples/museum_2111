@@ -65,7 +65,7 @@ describe Museum do
             expect(dmns.patrons).to eq([patron_1, patron_2, patron_3])
         end
 
-        xit '#patrons_by_exhibit_interest' do 
+        it '#patrons_by_exhibit_interest' do 
             expected = {
             gems_and_minerals => [patron_1],
             dead_sea_scrolls => [patron_1, patron_2, patron_3],
