@@ -9,4 +9,9 @@ RSpec.describe Museum do
     expect(dmns).to be_a(Museum)
   end
 
-end 
+  it 'retrieves name' do
+    dmns = Museum.new("Denver Museum of Nature and Science")
+    expect(dmns.name).to eq("Denver Museum of Nature and Science")
+  end 
+
+end
