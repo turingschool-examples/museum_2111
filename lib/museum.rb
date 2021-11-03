@@ -1,4 +1,4 @@
-require './lib/exhibit'
+# require './lib/exhibit'
 class Museum
   attr_reader :name, :exhibits
 

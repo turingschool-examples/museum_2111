@@ -38,4 +38,9 @@ RSpec.describe Museum do
 
     expect(dmns.exhibits).to eq([gems_and_minerals, dead_sea_scrolls, imax])
   end
+
+  it 'has a name' do
+    patron_1 = Patron.new('Bob', 20)
+    expect(patron_1.name).to eq('Bob')
+  end
 end
