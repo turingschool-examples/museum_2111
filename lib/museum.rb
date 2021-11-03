@@ -4,5 +4,10 @@ class Museum
   def initialize(name)
     @name = name
     @exhibits = []
-  end 
+  end
+
+  def add_exhibit(exhibit)
+    @exhibits.push(exhibit)
+  end
+  
 end
