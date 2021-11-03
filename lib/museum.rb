@@ -25,4 +25,16 @@ class Museum
     end
     recommended
   end
+
+  def admit(patron)
+    @patrons << patron
+  end
+
+  def patrons_by_exhibit_interest
+    @exhibits.map do |exhibit|
+      @patrons.group_by do |patron|
+        recommend_exhibits(patron)
+      end
+    end
+  end
 end
