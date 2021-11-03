@@ -28,4 +28,5 @@ RSpec.describe Patron do
     expected = ["Dead Sea Scrolls", "Gems and Minerals"]
 
     expect(patron.interests).to eq(expected)
+  end
 end
