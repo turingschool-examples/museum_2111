@@ -120,6 +120,7 @@ RSpec.describe Museum do
     @patron_2.add_interest("Dead Sea Scrolls")
     @patron_3.add_interest("Dead Sea Scrolls")
 
-    expect(@dmns.draw_lottery_winner(@dead_sea_scrolls)).to eq('Johnny' || 'Bob')
+    expect(@dmns.draw_lottery_winner(@dead_sea_scrolls)).to eq('Johnny')
+    expect(@dmns.draw_lottery_winner(@gems_and_minerals)).to eq(nil)
   end
 end
