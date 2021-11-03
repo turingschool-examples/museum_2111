@@ -79,8 +79,9 @@ describe Museum do
         end
 
         it '#draw_lottery_winner' do 
-            allow(dmns.draw_lottery_winner).to receive(:ticket_lottery_contestants(dead_sea_scrolls)).and_return(patron_1)
-            expect(dmns.draw_lottery_winner).to eq(patron_1 || patron2 )
+            allow(dmns.draw_lottery_winner(dead_sea_scrolls)).to receive(:dead_sea_scrolls).and_return(patron_1)
+            allow(dmns.draw_lottery_winner(dead_sea_scrolls)).to receive(:dead_sea_scrolls).and_return(patron_2)
+            allow(dmns.draw_lottery_winner(dead_sea_scrolls)).to receive(:gems_and_minerals).and_return(nil)
         end
     end
 end
