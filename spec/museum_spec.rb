@@ -7,4 +7,9 @@ RSpec.describe Exhibit do
     dmns = Museum.new('Denver Museum of Nature and Science')
     expect(dmns).to be_an_instance_of(Museum)
   end
+
+  it 'has a name' do
+    dmns = Museum.new('Denver Museum of Nature and Science')
+    expect(dmns.name).to eq('Denver Museum of Nature and Science')
+  end
 end
