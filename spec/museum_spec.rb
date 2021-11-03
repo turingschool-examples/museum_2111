@@ -11,6 +11,7 @@ RSpec.describe Museum do
     @imax = Exhibit.new({name: "IMAX",cost: 15})
     @patron_1 = Patron.new("Bob", 20)
     @patron_2 = Patron.new("Sally", 20)
+    @patron_3 = Patron.new("Johnny", 5)
   end
 
   it "exists" do
@@ -43,6 +44,20 @@ RSpec.describe Museum do
     it "recommends exhibits to patrons based on their interests" do
       @patron_2.add_interest("IMAX")
       expect(@dmns.recommended_exhibits(@patron_2)).to eq([@imax])
+    end
+  end
+  describe "creating a hash that will let us know which patrons like which exhibit" do
+    before :each do
+      @patron_1.add_interest("Gems and Minerals")
+      @patron_1.add_interest("Dead Sea Scrolls")
+      @patron_2.add_interest("Dead Sea Scrolls")
+      @patron_3.add_interest("Dead Sea Scrolls")
+    end
+    it "returns a hash where the key is an exhibit and values are the patrons intersted" do
+      expect(@dmns.patrons_by_exhibit_interest).to eq({
+        "Gems and Minerals" => [@patron_1],
+        "Dead Sea Scrolls"  => [@patron_1, @patron_2, @patron_3]          
+        })
     end
   end
 end
