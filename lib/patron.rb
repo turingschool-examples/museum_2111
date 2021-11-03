@@ -6,4 +6,8 @@ class Patron
     @spending_money = spending_money
     @interests = []
   end
+
+  def add_interest(topic)
+    @interests.push(topic)
+  end
 end
