@@ -40,4 +40,10 @@ class Museum
     end
     exhibit_interest_hash
   end
+
+  def ticket_lottery_contestants(exhibit)
+    @patrons.select do |patron|
+      patron.spending_money < exhibit.cost
+    end
+  end
 end
