@@ -61,4 +61,19 @@ RSpec.describe Museum do
       expect(dmns.recommend_exhibit(patron_2)).to eq([imax.name])
     end
   end
+
+  describe '#patrons_by_exhibit_interests' do
+    it 'returns a hash' do
+      expect(dmns.patrons_by_exhibit_interests).to be_an_instance_of(Hash)
+    end
+
+    it 'sets exhibits to keys' do
+      expect(dmns.patrons_by_exhibit_interests.keys).to eq([])
+    end
+
+    it 'sets patrons with interest in exhibit as value' do
+      expect(dmns.patrons_by_exhibit_interests.value).to eq([])
+    end
+
+  end
 end
