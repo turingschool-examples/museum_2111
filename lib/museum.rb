@@ -19,6 +19,13 @@ class Museum
 
   def admit(patron)
     @patrons.push(patron)
+    # exhibit_cost_list = @exhibits.sort_by { |exhibit| exhibit.cost }.reverse
+
+    # exhibit_cost_list.each do |exhibit|
+    #   if exhibit.cost <= patron.spending_money
+    #     patron.spending_money -= exhibit.cost
+    #   end
+    # end
   end
 
   def patrons_by_exhibit_interest
