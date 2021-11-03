@@ -24,6 +24,7 @@ describe Museum do
     it 'has_attributes' do
       expect(@museum.name).to eq("Denver Museum of Nature and Science")
       expect(@museum.exhibits).to eq([])
+      expect(@museum.patrons).to eq([])
     end
   end
 
@@ -49,7 +50,19 @@ describe Museum do
       end
     end
 
-    describe 'patrons_by_exhibit_interest' do
+    describe ' #admit' do
+      it 'adds a patron to the patrons list alphabetically' do
+        expect(@museum.patrons).to eq([])
+        @museum.admit(@patron_1)
+        expect(@museum.patrons).to eq([@patron_1])
+        @museum.admit(@patron_2)
+        expect(@museum.patrons).to eq([@patron_1, @patron_2])
+        @museum.admit(@patron_3)
+        expect(@museum.patrons).to eq([@patron_1, @patron_3, @patron_2])
+      end
+    end
+
+    describe ' #patrons_by_exhibit_interest' do
       before(:each) do
         @patron_1 = Patron.new("Bob", 20)
         @patron_1.add_interest("Dead Sea Scrolls")
@@ -61,6 +74,9 @@ describe Museum do
         @museum.add_exhibit(@gems_and_minerals)
         @museum.add_exhibit(@dead_sea_scrolls)
         @museum.add_exhibit(@imax)
+        @museum.admit(@patron_1)
+        @museum.admit(@patron_2)
+        @museum.admit(@patron_3)
       end
       it 'returns a hash where each key is an exhibit' do
         expect(@museum.patrons_by_exhibit_interest).to be_a(Hash)
