@@ -14,9 +14,10 @@ class Museum
 
   def recommend_exhibits(patron)
     #require "pry"; binding.pry
-    recommended = patron.interests.map do |interest|
+    recommended = []
+    patron.interests.each do |interest|
       @exhibits.each do |exhibit|
-        if exhibit == interest
+        if exhibit.name == interest
           recommended.push(exhibit)
         end
       end
