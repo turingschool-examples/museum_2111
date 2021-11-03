@@ -1,7 +1,7 @@
 require './lib/exhibit'
 require './lib/patron'
 
-RSpec.describe do
+RSpec.describe Exhibit do
 
   it 'exists' do
     exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
@@ -22,5 +22,5 @@ RSpec.describe do
     exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
     patron_1 = Patron.new("Bob", 20)
     expect(patron_1).to be_a(Patron)
-  end 
+  end
 end

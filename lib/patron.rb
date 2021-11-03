@@ -6,5 +6,9 @@ class Patron
     @interests = []
   end
 
+  def add_interest(interest)
+    @interests.push(interest)
+  end 
+
 
 end
