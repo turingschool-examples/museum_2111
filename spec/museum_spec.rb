@@ -16,6 +16,7 @@ describe Museum do
     it 'attributes' do
         expect(dmns.name).to eq("Denver Museum of Nature and Science")
         expect(dmns.exhibits).to eq([])
+        expect(dmns.patrons).to eq([])
     end
 
     context 'builds museum' do 
@@ -61,10 +62,10 @@ describe Museum do
         end 
 
         it 'can add patrons' do 
-            expect(dmns.patrons).to eq[patron_1, patron_2, patron_3]
+            expect(dmns.patrons).to eq([patron_1, patron_2, patron_3])
         end
 
-        it '#patrons_by_exhibit_interest' do 
+        xit '#patrons_by_exhibit_interest' do 
             expected = {
             gems_and_minerals => [patron_1],
             dead_sea_scrolls => [patron_1, patron_2, patron_3],
