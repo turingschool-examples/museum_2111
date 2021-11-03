@@ -4,7 +4,7 @@ require './lib/exhibit'
 
 RSpec.describe Museum do
 
-  before(:all) do
+  before(:each) do
     @dmns = Museum.new("Denver Museum of Nature and Science")
     @gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     @dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
@@ -69,6 +69,9 @@ RSpec.describe Museum do
 
   describe '#patrons_interested' do
     it 'returns the patrons interested in an exhibit' do
+      @dmns.admit(@patron_1)
+      @dmns.admit(@patron_2)
+      @dmns.admit(@patron_3)
       @dmns.add_exhibit(@gems_and_minerals)
       @dmns.add_exhibit(@dead_sea_scrolls)
       @dmns.add_exhibit(@imax)
@@ -82,7 +85,10 @@ RSpec.describe Museum do
   end
 
   describe '#patrons_by_exhibit_interest' do
-    xit 'list patrons who are interested in an exhibit' do
+    it 'list patrons who are interested in an exhibit' do
+      @dmns.admit(@patron_1)
+      @dmns.admit(@patron_2)
+      @dmns.admit(@patron_3)
       @dmns.add_exhibit(@gems_and_minerals)
       @dmns.add_exhibit(@dead_sea_scrolls)
       @dmns.add_exhibit(@imax)
