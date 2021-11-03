@@ -34,6 +34,9 @@ describe Museum do
     it 'starts with no exhibits' do
       expect(@dmns.exhibits).to eq([])
     end
+    it 'starts with no patrons' do
+      expect(@dmns.patrons).to eq([])
+    end
   end
 
   describe '#add_exhibit' do
@@ -63,6 +66,12 @@ describe Museum do
 
   describe '#patrons_by_exhibit_interest' do
     it 'returns a hash of patrons by their interests' do
+      @dmns.add_exhibit(@gems_and_minerals)
+      @dmns.add_exhibit(@dead_sea_scrolls)
+      @dmns.add_exhibit(@imax)
+      @dmns.admit(@patron_1)
+      @dmns.admit(@patron_2)
+      @dmns.admit(@patron_3)
       expected = {
         "Gems and Minerals" => [@patron_1],
         "Dead Sea Scrolls" => [@patron_1, @patron_2, @patron_3],
