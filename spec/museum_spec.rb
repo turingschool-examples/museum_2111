@@ -50,7 +50,7 @@ RSpec.describe do
     expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
   end
 
-  it 'returns patrons by exhibit interest regardless how much money they have' do
+  xit 'returns patrons by exhibit interest regardless how much money they have' do
     expect(@dmns.patrons_by_exhibit_interest).to eq({@gems_and_minerals => [@patron_1],
                                                     @dead_sea_scrolls => [@patron_1, @patron_3],
                                                     @imax => [@patron_2]})
