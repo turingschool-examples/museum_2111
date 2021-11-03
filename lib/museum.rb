@@ -2,8 +2,11 @@ require './lib/exhibit'
 require './lib/patron'
 
 class Museum
-  attr_reader
+  attr_reader :name
+  attr_accessor :exhibits
 
-  def initialize
+  def initialize(name)
+    @name = name
+    @exhibits = []
   end
-end 
+end
