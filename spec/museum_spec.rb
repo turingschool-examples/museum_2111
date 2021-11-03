@@ -69,9 +69,19 @@ describe Museum do
 
   describe '#patrons_by_exhibit_interest' do
     it 'returns a hash with exhibit keys and patrons who are interestsed in it' do
+      @dmns.add_exhibit(@gems_and_minerals)
+      @dmns.add_exhibit(@dead_sea_scrolls)
+      @dmns.add_exhibit(@imax)
       @dmns.admit(@patron_1)
       @dmns.admit(@patron_2)
       @dmns.admit(@patron_3)
       expect(@dmns.patrons_by_exhibit_interest).to eq(@expected)
+    end
+  end
+
+  describe '#ticket_lottery_contestants' do
+    it 'returns an array of patrons that dont have enough money for the exibit' do
+
+    end
   end
 end
