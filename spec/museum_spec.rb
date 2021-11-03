@@ -123,4 +123,17 @@ RSpec.describe Museum do
     expect(@dmns.draw_lottery_winner(@dead_sea_scrolls)).to eq('Johnny')
     expect(@dmns.draw_lottery_winner(@gems_and_minerals)).to eq(nil)
   end
+
+  it '#patrons_of_exhibits' do
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+    tj = Patron.new("TJ", 7)
+    tj.add_interest("IMAX")
+    tj.add_interest("Dead Sea Scrolls")
+    @dmns.admit(tj)
+
+    expect(tj.spending_money).to eq(7)
+  end
 end
