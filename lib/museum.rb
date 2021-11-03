@@ -37,4 +37,8 @@ class Museum
             hash
         end
     end
+
+    def ticket_lottery_contestants(exhibit)
+        @patrons.find_all { |patron| patron.spending_money < exhibit.cost}
+    end
 end
