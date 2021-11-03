@@ -77,5 +77,10 @@ describe Museum do
         it '#ticket_lottery_contestants' do 
             expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq([patron_1, patron_3])
         end
+
+        it '#draw_lottery_winner' do 
+            allow(dmns.draw_lottery_winner).to receive(:ticket_lottery_contestants(dead_sea_scrolls)).and_return(patron_1)
+            expect(dmns.draw_lottery_winner).to eq(patron_1 || patron2 )
+        end
     end
 end
