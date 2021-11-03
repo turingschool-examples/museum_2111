@@ -9,6 +9,4 @@ class Patron
   def add_interest(interest_name)
     @interests.push(interest_name)
   end 
-
-
 end
