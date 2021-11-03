@@ -53,10 +53,27 @@ RSpec.describe Museum do
     expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
   end
 
+  it '#patrons_interested_in' do
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+    @patron_1.add_interest("Gems and Minerals")
+
+    expect(@dmns.patrons_interested_in(@gems_and_minerals)).to eq([@patron_1])
+  end
+
   it '#patrons_by_exhibit_interest' do
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
+
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
 
     @patron_1.add_interest("Gems and Minerals")
     @patron_1.add_interest("Dead Sea Scrolls")

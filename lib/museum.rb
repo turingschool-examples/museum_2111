@@ -25,4 +25,19 @@ class Museum
     @patrons << patron
   end
 
+  def patrons_interested_in(exhibit)
+    @patrons.select do |patron|
+      patron.interests.any? do |interest|
+        interest == exhibit.name
+      end
+    end
+  end
+
+  def patrons_by_exhibit_interest
+    exhibit_interest_hash = {}
+    exhibits.each do |exhibit|
+      exhibit_interest_hash[exhibit] = patrons_interested_in(exhibit)
+    end
+    exhibit_interest_hash
+  end
 end
