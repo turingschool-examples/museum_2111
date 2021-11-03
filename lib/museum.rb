@@ -19,4 +19,10 @@ class Museum
   def admit(patron)
     @patrons << patron
   end
+
+  #got stuck on this method
+  def patrons_by_exhibit_interest
+    patrons_by_interest = Hash.new
+
+  end
 end
