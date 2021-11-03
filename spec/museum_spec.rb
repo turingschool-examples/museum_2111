@@ -10,9 +10,16 @@ describe Museum do
     @imax = Exhibit.new({name: "IMAX",cost: 15})
     @patron_1 = Patron.new("Bob", 20)
     @patron_2 = Patron.new("Sally", 20)
+    @patron_3 = Patron.new("Johnny", 5)
     @patron_1.add_interest("Dead Sea Scrolls")
     @patron_1.add_interest("Gems and Minerals")
     @patron_2.add_interest("IMAX")
+    @patron_3.add_interest("Dead Sea Scrolls")
+    @expected = {
+      @gems_and_minerals => [@patron_1],
+      @dead_sea_scrolls => [@patron_1, @patron_3],
+      @imax => [@patron_2]
+    }
   end
 
   describe '#initialize' do
@@ -58,5 +65,13 @@ describe Museum do
       expect(@dmns.recommend_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
       expect(@dmns.recommend_exhibits(@patron_2)).to eq([@imax])
     end
+  end
+
+  describe '#patrons_by_exhibit_interest' do
+    it 'returns a hash with exhibit keys and patrons who are interestsed in it' do
+      @dmns.admit(@patron_1)
+      @dmns.admit(@patron_2)
+      @dmns.admit(@patron_3)
+      expect(@dmns.patrons_by_exhibit_interest).to eq(@expected)
   end
 end
