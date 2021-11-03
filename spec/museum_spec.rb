@@ -50,4 +50,15 @@ RSpec.describe Museum do
     patron_1.add_interest('Gems and Minerals')
     expect(patron_1.interests).to eq(['Dead Sea Scrolls', 'Gems and Minerals'])
   end
+
+  it 'has a new patron' do
+    patron_2 = Patron.new('Sally', 20)
+    expect(patron_2.name).to eq('Sally')
+  end
+
+  it 'has a new patron with interests' do
+    patron_2 = Patron.new('Sally', 20)
+    patron_2.add_interest('IMAX')
+    expect(patron_2.interests).to eq(['IMAX'])
+  end
 end
