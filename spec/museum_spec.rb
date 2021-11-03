@@ -44,4 +44,12 @@ RSpec.describe Museum do
     expect(@dmns.recommend_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
     expect(@dmns.recommend_exhibits(@patron_2)).to eq([@imax])
   end
+
+  it '#admit' do
+    expect(@dmns.patrons).to eq([])
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+    expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
+  end
 end
