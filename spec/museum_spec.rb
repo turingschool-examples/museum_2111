@@ -27,9 +27,9 @@ describe Exhibit do
   end
 
   it 'adds exhibits' do
-    @dmns.add_exhibit(gems_and_minerals)
-    @dmns.add_exhibit(dead_sea_scrolls)
-    @dmns.add_exhibit(imax)
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
 
     expect(@dmns.exhibits.count).to eq(3)
   end
@@ -39,7 +39,13 @@ describe Exhibit do
     @patron_1.add_interest("Gems and Minerals")
     @patron_2.add_interest("IMAX")
 
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+
     expect(@dmns.recommend_exhibits(@patron_1).count).to eq(2)
     expect(@dmns.recommend_exhibits(@patron_2).count).to eq(1)
   end
+
+  it 'adds patrons'
 end
