@@ -65,6 +65,11 @@ describe Museum do
             expect(dmns.patrons).to eq([patron_1, patron_2, patron_3])
         end
 
+        it '#patron interests' do 
+            expect(dmns.interests_list(patron_1)).to eq(["Gems and Minerals", "Dead Sea Scrolls"])
+            expect(dmns.interests_list(patron_2)).to eq(["Dead Sea Scrolls"])
+        end
+
         it '#patrons_by_exhibit_interest' do 
             expected = {
             gems_and_minerals => [patron_1],

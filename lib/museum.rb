@@ -13,17 +13,18 @@ class Museum
         @exhibits << exhibit
     end
 
-    
-    def recommend_exhibits(patron)
-        exhibits = []
-        @exhibits.each do |exhibit|
-            patron.interests.each do |interest|
-               if exhibit.name == interest
-               exhibits << exhibit
-               end
-            end
+    def interests_list(patron)
+        patron.interests.map do |interest|
+            interest
         end
-        exhibits
+    end
+
+    def recommend_exhibits(patron)
+        @exhibits.map do |exhibit|
+            if interests_list(patron).include?(exhibit.name)
+               exhibit
+            end 
+        end.compact
     end
 
     def admit(patron)
