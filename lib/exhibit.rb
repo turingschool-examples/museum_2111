@@ -6,4 +6,8 @@ class Exhibit
   def name
     @exhibit[:name]
   end
+
+  def cost
+    @exhibit[:cost]
+  end 
 end
