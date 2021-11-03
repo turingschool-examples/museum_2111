@@ -12,6 +12,11 @@ class Museum
     @exhibits << exhibit_object
   end
 
+  # Push patrons into patron array
+  def admit(patron_object)
+    @patrons << patron_object
+  end
+
   def recommend_exhibits(patron_object)
     patron_exhibits = []
 
