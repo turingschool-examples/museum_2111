@@ -46,4 +46,13 @@ class Museum
       return eligible_patrons
     end
   end
+
+  def draw_lottery_winner(exhibit)
+    eligible_patrons = ticket_lottery_contestants(exhibit)
+    if eligible_patrons == nil
+      return nil
+    else
+      return eligible_patrons.sample(1)[0]
+    end
+  end
 end

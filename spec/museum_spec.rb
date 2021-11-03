@@ -135,7 +135,6 @@ describe Museum do
         end
         it 'returns one lottery winner patron' do
           expect(@museum.draw_lottery_winner(@dead_sea_scrolls)).to be_a(Patron)
-          expect(@museum.draw_lottery_winner(@dead_sea_scrolls).length).to eq(1)
         end
       end
     end
