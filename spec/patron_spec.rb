@@ -3,6 +3,7 @@ require './lib/patron'
 RSpec.describe Patron do
   it 'exists' do
     patron = Patron.new("Bob", 20)
+    expect(patron).to be_instance_of(Patron)
   end
 
   it 'can read patron name' do
