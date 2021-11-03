@@ -12,6 +12,18 @@ RSpec.describe Museum do
 
   let(:imax) {Exhibit.new({name: "IMAX",cost: 15})}
 
+  let(:patron_1) {Patron.new("Bob", 20)}
+
+  let(:patron_2) {Patron.new("Sally", 20)}
+
+  before(:each) do
+    patron_1.add_interest("Dead Sea Scrolls")
+
+    patron_1.add_interest("Gems and Minerals")
+
+    patron_2.add_interest("IMAX")
+  end
+
   describe '#initialize' do
     it 'exists' do
       expect(dmns).to be_an_instance_of(Museum)
@@ -38,5 +50,11 @@ RSpec.describe Museum do
     end
   end
 
+  describe '#recommend_exhibit' do
+    it 'creates array of exhibits that match patrons interests' do
+      expect(dmns.recommend_exhibit(patron_1)).to eq([dead_sea_scrolls, gems_and_minerals])
 
+      expect(dmns.recommend_exhibit(patron_2)).to eq([imax])
+    end
+  end
 end
