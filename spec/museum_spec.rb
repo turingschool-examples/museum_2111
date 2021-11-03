@@ -21,4 +21,15 @@ RSpec.describe Museum do
       expect(@dmns.exhibits).to be_empty
     end
   end
+
+  describe '#add_exhibit' do
+    it 'can add exhibits to the museum' do
+      @dmns.add_exhibit(@gems_and_minerals)
+      @dmns.add_exhibit(@dead_sea_scrolls)
+      @dmns.add_exhibit(@imax)
+      expected = []@dmns.exhibits[0], @dmns.exhibits[1], @dmns.exhibits[2]]
+
+      expect(@dmns.exhibits).to eq(expected)
+    end
+  end
 end
