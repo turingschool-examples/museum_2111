@@ -47,5 +47,10 @@ describe Exhibit do
     expect(@dmns.recommend_exhibits(@patron_2).count).to eq(1)
   end
 
-  it 'adds patrons'
+  it 'adds patrons' do
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+
+    expect(@dmns.patrons.count).to eq(2)
+  end
 end
