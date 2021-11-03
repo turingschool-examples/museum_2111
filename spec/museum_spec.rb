@@ -61,11 +61,16 @@ describe Exhibit do
     @patron_2.add_interest("IMAX")
     @patron_3.add_interest("Dead Sea Scrolls")
 
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+
+
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
 
-    expect(dmns.patrons_by_exhibit_interest).to be_a(Hash)
+    expect(@dmns.patrons_by_exhibit_interest).to be_a(Hash)
     # expect(dmns.patrons_by_exhibit_interest[]).to be_a(Hash)
   end
 end
