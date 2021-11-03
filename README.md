@@ -130,13 +130,13 @@ pry(main)> dmns = Museum.new("Denver Museum of Nature and Science")
 # => #<Museum:0x00007fb20205d690...>
 
 pry(main)> gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
-# => #<Exhibit:0x00007fb202238618...>
+# => gems_and_minerals
 
 pry(main)> dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
-# => #<Exhibit:0x00007fb202248748...>
+# => dead_sea_scrolls
 
 pry(main)> imax = Exhibit.new({name: "IMAX",cost: 15})
-# => #<Exhibit:0x00007fb20225f8d0...>
+# => imax
 
 pry(main)> dmns.add_exhibit(gems_and_minerals)
 
@@ -148,7 +148,7 @@ pry(main)> dmns.patrons
 # => []
 
 pry(main)> patron_1 = Patron.new("Bob", 0)
-# => #<Patron:0x00007fb2011455b8...>
+# => patron_1
 
 pry(main)> patron_1.add_interest("Gems and Minerals")
 
@@ -156,12 +156,12 @@ pry(main)>
 patron_1.add_interest("Dead Sea Scrolls")
 
 pry(main)> patron_2 = Patron.new("Sally", 20)
-# => #<Patron:0x00007fb20227f8b0...>
+# => patron_2
 
 pry(main)> patron_2.add_interest("Dead Sea Scrolls")
 
 pry(main)> patron_3 = Patron.new("Johnny", 5)
-# => #<Patron:0x6666fb20114megan...>
+# => patron_3
 
 pry(main)> patron_3.add_interest("Dead Sea Scrolls")
 
@@ -172,20 +172,20 @@ pry(main)> dmns.admit(patron_2)
 pry(main)> dmns.admit(patron_3)
 
 pry(main)> dmns.patrons
-# => [#<Patron:0x00007fb2011455b8...>, #<Patron:0x00007fb20227f8b0...>, #<Patron:0x6666fb20114megan...>]
+# => [patron_1, patron_2, patron_3]
 
 #Patrons are added even if they don't have enough money for all/any exhibits.
 
 pry(main)> dmns.patrons_by_exhibit_interest
 # =>
 # {
-#   #<Exhibit:0x00007fb202238618...> => [#<Patron:0x00007fb2011455b8...>],
-#   #<Exhibit:0x00007fb202248748...> => [#<Patron:0x00007fb2011455b8...>, #<Patron:0x00007fb20227f8b0...>, #<Patron:0x6666fb20114megan...>],
-#   #<Exhibit:0x00007fb20225f8d0...> => []
+#   gems_and_minerals => [patron_1],
+#   dead_sea_scrolls => [patron_1, patron_2, patron_3],
+#   imax => []
 # }
 
 pry(main)> dmns.ticket_lottery_contestants(dead_sea_scrolls)
-# => [#<Patron:0x00007fb2011455b8...>, #<Patron:0x6666fb20114megan...>]
+# => [patron_1, patron_3]
 
 pry(main)> dmns.draw_lottery_winner(dead_sea_scrolls)
 # => "Johnny" or "Bob" can be returned here. Fun!
