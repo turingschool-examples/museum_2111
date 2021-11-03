@@ -48,16 +48,30 @@ RSpec.describe Museum do
   end
   describe "creating a hash that will let us know which patrons like which exhibit" do
     before :each do
+      @dmns.add_exhibit(@gems_and_minerals)
+      @dmns.add_exhibit(@dead_sea_scrolls)
+      @dmns.add_exhibit(@imax)
       @patron_1.add_interest("Gems and Minerals")
       @patron_1.add_interest("Dead Sea Scrolls")
       @patron_2.add_interest("Dead Sea Scrolls")
       @patron_3.add_interest("Dead Sea Scrolls")
     end
-    it "returns a hash where the key is an exhibit and values are the patrons intersted" do
+    xit "returns a hash where the key is an exhibit and values are the patrons intersted" do
+      @dmns.recommended_exhibits(@patron_1)
+      @dmns.recommended_exhibits(@patron_2)
+      @dmns.recommended_exhibits(@patron_3)
       expect(@dmns.patrons_by_exhibit_interest).to eq({
         "Gems and Minerals" => [@patron_1],
-        "Dead Sea Scrolls"  => [@patron_1, @patron_2, @patron_3]          
+        "Dead Sea Scrolls"  => [@patron_1, @patron_2, @patron_3]
         })
     end
   end
+
+  it "updates the patron array when a new patron is added" do
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+    expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
+  end
+
 end
