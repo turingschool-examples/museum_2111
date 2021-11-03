@@ -33,4 +33,17 @@ class Museum
     end
     return patrons_by_exhibit_interest
   end
+
+  def ticket_lottery_contestants(exhibit)
+    interested_patrons = patrons_by_exhibit_interest[exhibit]
+    if interested_patrons == []
+      return nil
+    end
+    eligible_patrons = interested_patrons.find_all{|patron| patron.spending_money < exhibit.cost}
+    if eligible_patrons == []
+      return nil
+    else
+      return eligible_patrons
+    end
+  end
 end

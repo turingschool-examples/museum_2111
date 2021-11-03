@@ -92,6 +92,13 @@ describe Museum do
 
     describe 'lottery methods' do
       before(:each) do
+        @museum = Museum.new("Denver Museum of Nature and Science")
+        @gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+        @dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+        @imax = Exhibit.new({name: "IMAX",cost: 15})
+        @museum.add_exhibit(@gems_and_minerals)
+        @museum.add_exhibit(@dead_sea_scrolls)
+        @museum.add_exhibit(@imax)
         @patron_1 = Patron.new("Bob", 0)
         @patron_1.add_interest("Dead Sea Scrolls")
         @patron_1.add_interest("Gems and Minerals")
@@ -99,26 +106,26 @@ describe Museum do
         @patron_2.add_interest("Dead Sea Scrolls")
         @patron_3 = Patron.new("Johnny", 5)
         @patron_3.add_interest("Dead Sea Scrolls")
-        @museum.add_exhibit(@gems_and_minerals)
-        @museum.add_exhibit(@dead_sea_scrolls)
-        @museum.add_exhibit(@imax)
+
         @museum.admit(@patron_1)
         @museum.admit(@patron_2)
         @museum.admit(@patron_3)
       end
       describe ' #ticket_lottery_contestants' do
+        it 'returns nil if no Patrons are interested' do
+          expect(@museum.ticket_lottery_contestants(@imax)).to eq(nil)
+        end
         it 'returns nil if no Patrons are eligible' do
-          expect(@museum.ticket_lottery_contestants(@dead_sea_scrolls)).to eq(nil)
+          expect(@museum.ticket_lottery_contestants(@gems_and_minerals)).to eq(nil)
         end
         it 'returns an array of Patrons' do
-          expect(@museum.ticket_lottery_contestants(@gems_and_minerals)).to be_a(Array)
+          expect(@museum.ticket_lottery_contestants(@dead_sea_scrolls)).to be_a(Array)
         end
         it 'returns an array of Patrons if some patrons are eligible' do
-          expect(@museum.ticket_lottery_contestants(@imax).all?{|value| value.class == Patron}).to eq(true)
+          expect(@museum.ticket_lottery_contestants(@dead_sea_scrolls).all?{|value| value.class == Patron}).to eq(true)
         end
         it 'returns the correct array of Patrons' do
-          expect(@museum.ticket_lottery_contestants(@gems_and_minerals)).to eq([@patron_1, @patron_3])
-          expect(@museum.ticket_lottery_contestants(@imax)).to eq([@patron_1, @patron_3])
+          expect(@museum.ticket_lottery_contestants(@dead_sea_scrolls)).to eq([@patron_1, @patron_3])
         end
       end
     end
