@@ -14,4 +14,8 @@ class Patron
     @interests << interest
   end
 
+  def self.search_patrons
+    h = Hash.new
+    h[Patron.interests] = Patron.name
+  end
 end
