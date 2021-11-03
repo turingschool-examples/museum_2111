@@ -9,6 +9,8 @@ RSpec.describe Museum do
     @gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     @dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
     @imax = Exhibit.new({name: "IMAX",cost: 15})
+    @patron_1 = Patron.new("Bob", 20)
+    @patron_2 = Patron.new("Sally", 20)
   end
 
   it "exists" do
@@ -18,5 +20,24 @@ RSpec.describe Museum do
   it "checks the attributes" do
     expect(@dmns.name).to eq("Denver Museum of Nature and Science")
     expect(@dmns.exhibits).to eq([])
+  end
+
+  it "checks the exhibits after adding new exhibits " do
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+    expect(@dmns.exhibits).to eq([@gems_and_minerals, @dead_sea_scrolls, @imax])
+  end
+
+  describe "checking if the #recommended_exhibits method works" do
+    it "recommends exhibits to patrons based on their interests" do
+      @patron_1.add_interest("Dead Sea Scrolls")
+      @patron_1.add_interest("Gems and Minerals")
+      expect(@dmns.recommended_exhibits).to eq([@dead_sea_scrolls, @gems_and_minerals])
+    end
+    xit "recommends exhibits to patrons based on their interests" do
+      @patron_2.add_interest("IMAX")
+      expect(@dmns.recommended_exhibits).to eq([@dead_sea_scrolls, @gems_and_minerals])
+    end
   end
 end
