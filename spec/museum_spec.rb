@@ -87,6 +87,22 @@ RSpec.describe Museum do
     }
 
     expect(@dmns.patrons_by_exhibit_interest).to eq(expected)
+  end
 
+  it '#ticket_lottery_contestatns' do
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+
+    @patron_1.add_interest("Gems and Minerals")
+    @patron_1.add_interest("Dead Sea Scrolls")
+    @patron_2.add_interest("Dead Sea Scrolls")
+    @patron_3.add_interest("Dead Sea Scrolls")
+
+    expect(ticket_lottery_contestatns(@dead_sea_scrolls)).to eq([@patron_1, @patron_3])
   end
 end
