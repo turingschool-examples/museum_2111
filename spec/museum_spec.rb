@@ -10,6 +10,7 @@ describe Exhibit do
 
     @patron_1 = Patron.new("Bob", 20)
     @patron_2 = Patron.new("Sally", 20)
+    @patron_3 = Patron.new("Johnny", 5)
 
     @dmns = Museum.new("Denver Museum of Nature and Science")
   end
@@ -52,5 +53,19 @@ describe Exhibit do
     @dmns.admit(@patron_2)
 
     expect(@dmns.patrons.count).to eq(2)
+  end
+
+  it 'has patrons_by_exhibit_interest' do
+    @patron_1.add_interest("Dead Sea Scrolls")
+    @patron_1.add_interest("Gems and Minerals")
+    @patron_2.add_interest("IMAX")
+    @patron_3.add_interest("Dead Sea Scrolls")
+
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+
+    expect(dmns.patrons_by_exhibit_interest).to be_a(Hash)
+    # expect(dmns.patrons_by_exhibit_interest[]).to be_a(Hash)
   end
 end
