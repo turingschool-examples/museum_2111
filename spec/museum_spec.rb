@@ -52,6 +52,9 @@ describe Museum do
 
   describe '#recommended_exhibits' do
     it 'returns exhibits that are recommended based on the patrons interests' do
+      @dmns.add_exhibit(@gems_and_minerals)
+      @dmns.add_exhibit(@dead_sea_scrolls)
+      @dmns.add_exhibit(@imax)
       expect(@dmns.recommend_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
       expect(@dmns.recommend_exhibits(@patron_2)).to eq([@imax])
     end
