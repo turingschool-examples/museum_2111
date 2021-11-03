@@ -5,4 +5,10 @@ class Patron
     @spending_money = spending_money
     @interests = []
   end
+
+  def add_interest(interest_name)
+    @interests.push(interest_name)
+  end 
+
+
 end
