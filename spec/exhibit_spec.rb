@@ -13,4 +13,5 @@ RSpec.describe Exhibit do
       expect(exhibit.name).to eq "Gems and Minerals"
       expect(exhibit.cost).to eq 0
     end
+  end 
 end
