@@ -13,7 +13,6 @@ class Museum
   end
 
   def recommend_exhibits(patron)
-    #require "pry"; binding.pry
     recommended = []
     patron.interests.each do |interest|
       @exhibits.each do |exhibit|
