@@ -23,7 +23,17 @@ RSpec.describe Museum do
     expect(@museum.patrons).to eq([])
   end
 
+  it 'can #admit patrons to patron[]' do
+    patron_1 = Patron.new("Sally", 20)
+    patron_2 = Patron.new("Bob", 20)
 
+    expected = [patron_1, patron_2]
+
+    @museum.admit(patron_1)
+    @museum.admit(patron_2)
+
+    expect(@museum.patrons).to eq(expected)
+  end
 
   it 'can #add_exhibit into exhibits[]' do
     gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
