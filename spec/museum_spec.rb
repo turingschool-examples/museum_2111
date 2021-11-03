@@ -19,6 +19,10 @@ RSpec.describe Museum do
     expect(@museum.exhibits).to eq([])
   end
 
+  it 'can initialize empty patron array' do
+    expect(@museum.patrons).to eq([])
+  end
+
 
 
   it 'can #add_exhibit into exhibits[]' do
