@@ -11,6 +11,7 @@ class Museum
 
   def add_exhibit(exhibit)
     @exhibits << exhibit
+    @exhibits = @exhibits.sort_by{|exhibit| exhibit.name}
   end
 
   def recommend_exhibits(patron)
