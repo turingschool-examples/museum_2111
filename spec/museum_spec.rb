@@ -99,12 +99,8 @@ RSpec.describe Museum do
       imax => []
 
     }
-
+    require 'pry'; binding.pry
     expect(@museum.patrons_by_exhibit_interest).to eq(expected)
   end
-
-
-
-
 
 end

@@ -24,7 +24,6 @@ class Museum
     # Map all matches and push into patron_exhibits[]
     @exhibits.map do |exhibit|
       patron_object.interests.map do |interest|
-        # require 'pry'; binding.pry
         if exhibit.exhibit_name == interest
           patron_exhibits << exhibit
         end
@@ -35,4 +34,10 @@ class Museum
     patron_exhibits.compact
   end
 
-end
+  # Returns exhibits as keys, patrons who are interested in
+  # a given exhibit as values within an array
+  def patrons_by_exhibit_interest
+    # lol
+  end
+
+  end

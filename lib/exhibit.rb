@@ -5,4 +5,6 @@ class Exhibit
     @exhibit_name = exhibit_info[:name]
     @exhibit_cost = exhibit_info[:cost]
   end
+
+  
 end
