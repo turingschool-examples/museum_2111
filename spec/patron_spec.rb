@@ -14,4 +14,9 @@ RSpec.describe Patron do
     patron = Patron.new("Bob", 20)
     expect(patron.money).to eq(20)
   end
+
+  it 'can initialize an empty interest array' do
+    patron = Patron.new("Bob", 20)
+    expect(patron.interests).to eq([])
+  end
 end
