@@ -30,7 +30,7 @@ class Museum
     @patrons << patron
   end
 
-  def patrons_by_exhibit_interest
+  def patrons_by_exhibit_interest  #couldnt figure this out
     @exhibits.map do |exhibit|
       @patrons.group_by do |patron|
         recommend_exhibits(patron)
