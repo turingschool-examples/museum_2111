@@ -16,5 +16,10 @@ RSpec.describe Exhibit do
 
         expect(exhibit.name).to eq("Gems and Minerals")
       end
+      it 'can have a cost' do
+        exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
+
+        expect(exhibit.cost).to be(0)
     end
   end
+end
