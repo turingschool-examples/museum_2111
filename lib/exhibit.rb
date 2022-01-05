@@ -9,4 +9,8 @@ class Exhibit
   def name
     @attrhash[:name]
   end
+
+  def cost
+    @attrhash[:cost]
+  end
 end
