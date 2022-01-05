@@ -12,4 +12,8 @@ RSpec.describe Museum do
   it 'exists' do
     expect(@dmns).to be_instance_of Museum
   end
+
+  it 'has name' do
+    expect(@dmns).to eq("Denver Museum of Nature and Science")
+  end
 end
