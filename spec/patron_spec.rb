@@ -8,6 +8,6 @@ RSpec.describe Patron do
   end
 
   it 'exists' do
-    expect(@patron).to be_instance_of Patron
+    expect(@patron_1).to be_instance_of Patron
   end
 end
