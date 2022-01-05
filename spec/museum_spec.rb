@@ -72,7 +72,7 @@ RSpec.describe Museum do
     expect(dmns.exhibits).to eq([gems_and_minerals, dead_sea_scrolls, imax])
   end
 
-  xit 'can admit patrons' do
+  it 'can admit patrons' do
     dmns.admit(patron_1)
     dmns.admit(patron_2)
     dmns.admit(patron_3)
