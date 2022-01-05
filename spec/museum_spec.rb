@@ -45,4 +45,10 @@ RSpec.describe Museum do
   it 'recommends exhibit to equal gems and dead sea for Patron 1' do
   expect(@dmns.recommend_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
   end
+
+  it 'has patrons yields empty array' do
+  expect(@dmns.patron).to eq([])
+  end
+
+
 end
