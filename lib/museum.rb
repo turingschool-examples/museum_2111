@@ -35,4 +35,10 @@ class Museum
     end
     patrons_by_exhibit_interest
   end
+
+  def ticket_lottery_contestants(exhibit)
+    contestants = patrons_by_exhibit_interest[exhibit].map do |patron|
+      patron.spending_money < exhibit.cost ? patron : next
+    end.compact
+  end
 end
