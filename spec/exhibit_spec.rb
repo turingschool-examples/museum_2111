@@ -34,5 +34,11 @@ RSpec.describe Exhibit do
 
         expect(patron_1.name).to eq("Bob")
       end
+
+      it 'can let the patron spend money' do
+        patron_1 = Patron.new("Bob", 20)
+
+        expect(patron_1.spending_money).to be(20)
+      end
     end
   end
