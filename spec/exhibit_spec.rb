@@ -8,9 +8,9 @@ RSpec.describe Exhibit do
     expect(exhibit).to be_a(Exhibit)
   end
 
-  xit 'has a name' do
+  it 'has a name' do
     exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
-    # binding.pry
+     #binding.pry
     expect(exhibit.name).to eq("Gems and Minerals")
   end
 
