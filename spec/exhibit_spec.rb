@@ -6,11 +6,11 @@ RSpec.describe Exhibit do
   let(:exhibit) {Exhibit.new({name: "Gems and Minerals", cost: 0})}
   let(:patron_1) {Patron.new("Bob", 20)}
 
-  it 'exists'
+  it 'exists' do
   expect(exhibit).to be_a(Exhibit)
   end
 
-  xit 'has a name' do
+  it 'has a name' do
   expect(exhibit.name).to eq("Gems and Minerals")
   end
 
@@ -39,6 +39,4 @@ RSpec.describe Exhibit do
     patron_1.add_interest("Gems and Minerals")
     expect(patron_1.interests).to eq(["Dead Sea Scrolls", "Gems and Minerals"])
   end
-
-
 end
