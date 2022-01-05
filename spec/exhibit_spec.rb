@@ -18,7 +18,7 @@ RSpec.describe Exhibit do
   expect(exhibit.cost).to eq(0)
   end
 
-  xit 'exists' do
+  it 'exists' do
   expect(patron_1).to be_a(Patron)
   end
 
