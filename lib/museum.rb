@@ -22,12 +22,4 @@ class Museum
       end
     end.flatten
   end
-
-  def admit(patron)
-    @patrons << patron
-  end
-
-  def patrons_by_exhibit_interest
-    Hash.new(0)
-  end
 end
