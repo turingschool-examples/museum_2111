@@ -46,4 +46,22 @@ class Museum
     winner = ticket_lottery_contestants(exhibit).sample
     winner == nil ? nil : winner.name
   end
+
+  def patrons_of_exhibits
+    patrons_of_exhibits = {}
+    @exhibits.each do |exhibit|
+      if !patrons_of_exhibits.has_key?(exhibit)
+        patrons_of_exhibits[exhibit] = []
+      end
+    end
+    patrons_by_exhibit_interest.each_pair do |exhibit, patrons|
+      patrons.each do |patron|
+        if patron.spending_money >= exhibit.cost
+          patron.spending_money -= exhibit.cost
+          patrons_of_exhibits[exhibit] << patron
+        end
+      end
+    end
+    patrons_of_exhibits
+  end
 end

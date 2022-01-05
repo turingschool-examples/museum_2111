@@ -1,6 +1,7 @@
 class Patron
 
-  attr_reader :name, :spending_money, :interests
+  attr_reader :name, :interests
+  attr_accessor :spending_money
 
   def initialize(name, spending_money)
     @name = name
@@ -10,6 +11,6 @@ class Patron
 
   def add_interest(interest)
     @interests << interest
-  end 
+  end
 
 end

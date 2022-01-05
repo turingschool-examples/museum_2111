@@ -162,7 +162,66 @@ RSpec.describe Museum do
     dmns.admit(tj)
     expect(tj.spending_money).to eq(7)
 
-    expect(dmns.patrons_of_exhibits).to eq({})
+    empty_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [], imax => []}
+
+    expect(dmns.patrons_of_exhibits).to eq(empty_exhibits)
   end
+
+  it 'patrons can be interested in multiple exhibits, but will only attend ones in their price range' do
+    dmns = Museum.new("Denver Museum of Nature and Science")
+    gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    imax = Exhibit.new({name: "IMAX",cost: 15})
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
+    tj = Patron.new("TJ", 7)
+    tj.add_interest("IMAX")
+    tj.add_interest("Dead Sea Scrolls")
+    dmns.admit(tj)
+    expect(tj.spending_money).to eq(7)
+    empty_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [], imax => []}
+    expect(dmns.patrons_of_exhibits).to eq(empty_exhibits)
+
+    patron_1 = Patron.new("Bob", 10)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("IMAX")
+    dmns.admit(patron_1)
+    bob_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [patron_1], imax => []}
+    expect(dmns.patrons_of_exhibits).to eq(bob_exhibits)
+    expect(patron_1.spending_money).to eq(0)
+  end
+
+  it 'patrons will attend the more expensive exhibit first' do
+    dmns = Museum.new("Denver Museum of Nature and Science")
+    gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    imax = Exhibit.new({name: "IMAX",cost: 15})
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
+    tj = Patron.new("TJ", 7)
+    tj.add_interest("IMAX")
+    tj.add_interest("Dead Sea Scrolls")
+    dmns.admit(tj)
+    empty_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [], imax => []}
+    patron_1 = Patron.new("Bob", 10)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("IMAX")
+    dmns.admit(patron_1)
+    bob_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [patron_1], imax => []}
+
+    patron_2 = Patron.new("Sally", 20)
+    patron_2.add_interest("IMAX")
+    patron_2.add_interest("Dead Sea Scrolls")
+    dmns.admit(patron_2)
+
+    sally_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [patron_1], imax => [patron_2]}
+    expect(dmns.patrons_of_exhibits).to eq(sally_exhibits)
+    expect(patron_2.spending_money).to eq(5)
+    
+  end
+
+
 
 end
