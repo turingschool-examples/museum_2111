@@ -18,5 +18,8 @@ class Museum
     end
   end
 
+  def admit(patron)
+    @patrons << patron
+  end
 
 end
