@@ -19,7 +19,7 @@ RSpec.describe Museum do
     expect(dmns.exhibits).to eq([])
   end
 
-  it 'has exhibits is an empty array' do
+  it 'has exhibits adds exhibits' do
     dmns = Museum.new("Denver Museum of Nature and Science")
     gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
