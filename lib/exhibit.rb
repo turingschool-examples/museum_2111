@@ -3,7 +3,7 @@ class Exhibit
 
   def initialize(info)
     @name   = info["name"]
-    @cost   = info["age"]
-    
+    @cost   = info["cost"]
+
   end
 end
