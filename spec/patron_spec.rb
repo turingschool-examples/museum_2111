@@ -1,5 +1,5 @@
 require './lib/patron'
-RSpec.describe do Patron
+RSpec.describe do
   it 'exists' do
     patron_1 = Patron.new("Bob", 20)
 
