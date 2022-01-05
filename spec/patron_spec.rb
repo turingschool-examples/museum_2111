@@ -21,7 +21,7 @@ RSpec.describe Patron do
     expect(patron_1.spending_money).to eq(20)
   end
 
-  xit 'has no interests by default' do
+  it 'has no interests by default' do
     patron_1 = Patron.new("Bob", 20)
     # binding.pry
     expect(patron_1.interests).to eq([])
