@@ -22,4 +22,12 @@ class Museum
       exhibits if patron.interests.include?(exhibit.name)
     end
   end
+
+  def patrons_by_exhibit_interest
+    by_exhibit_hash = Hash[@exhibits.collect {|exhibit| [exhibit.name, []]}]
+    by_exhibit_hash.keys.each do |key|
+      by_exhibit_hash[key] 
+    @patrons.select do |patron|
+      by_exhibit_hash[patron
+  end
 end
