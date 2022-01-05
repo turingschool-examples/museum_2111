@@ -23,7 +23,7 @@ RSpec.describe Museum do
     expect(dmns.exhibits).to eq([])
   end
 
-  xit 'exists' do
+  it 'exists' do
     expect(gems_and_minerals).to be_a(Exhibit)
     expect(dead_sea_scrolls).to be_a(Exhibit)
     expect(imax).to be_a(Exhibit)
