@@ -76,6 +76,10 @@ RSpec.describe do
     patron_1 = Patron.new("Bob", 0)
     patron_2 = Patron.new("Sally", 20)
     patron_3 = Patron.new("Johnny", 5)
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
+
     expect(dmns.patrons).to eq([patron_1, patron_2, patron_3])
   end
 end

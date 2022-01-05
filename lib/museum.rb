@@ -2,11 +2,12 @@ require './lib/patron'
 require './lib/exhibit'
 
 class Museum
-  attr_reader :name, :exhibits
+  attr_reader :name, :exhibits, :patrons
 
   def initialize(name)
     @name = name
     @exhibits = []
+    @patrons = []
   end
 
   def add_exhibit(exhibit)
@@ -18,5 +19,9 @@ class Museum
         exhibit.name if patron.interests.include?(exhibit.name)
     end
     patron_interests
+  end
+
+  def admit(patron)
+    @patrons << patron
   end
 end
