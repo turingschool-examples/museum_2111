@@ -9,4 +9,16 @@ class Museum
   def add_exhibit(exhibit)
     @exhibits.push(exhibit)
   end
-end
+
+  def recommend_exhibits(patrons)
+    reccomend = []
+    @exhibits.each do |exhibit|
+        patrons.interests.each do |patron|
+          if patron.include?(exhibit.name)
+            reccomend.push(exhibit)
+          end
+        end
+      end
+      return reccomend
+    end
+  end
