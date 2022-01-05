@@ -22,7 +22,17 @@ class Museum
     recommendation
   end
 
+  def lowest_cost
+    costs = @exhibits.map do |exhibit|
+      exhibit.cost
+    end
+    sorted = costs.sort
+    sorted.shift
+  end
+
   def admit(patron)
-    if patron.spending_money
+    if patron.spending_money > lowest_cost
+      @patrons << patron
+    end
   end
 end
