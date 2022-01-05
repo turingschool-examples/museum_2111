@@ -22,4 +22,8 @@ class Museum
       end
       return reccomend
     end
+
+    def admit(patron)
+      @patrons.push(patron)
+    end
   end
