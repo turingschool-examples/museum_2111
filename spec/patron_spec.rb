@@ -16,4 +16,9 @@ RSpec.describe 'patron' do
     expect(@patron_1.name).to eq("Bob")
   end
 
+  it "spending money" do
+    expect(@patron_1.spending_money).to eq(20)
+
+  end
+
 end
