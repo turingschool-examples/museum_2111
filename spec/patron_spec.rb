@@ -14,11 +14,11 @@ RSpec.describe Patron do
       expect(patron_1).to be_a Patron
     end
 
-    # xit 'can access attributes'
-    #
-    #   expect(patron_1.name).to eq("Bob")
-    #   expect(patron_1.spending_money). to eq(20)
-    # end
+    xit 'can access attributes' do
+
+      expect(patron_1.name).to eq("Bob")
+      expect(patron_1.spending_money). to eq(20)
+    end
 
     it 'can #add_interests' do
 
