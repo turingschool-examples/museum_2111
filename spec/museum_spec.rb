@@ -42,7 +42,7 @@ RSpec.describe Museum do
     expect(patron_3).to be_a(Patron)
   end
 
-  xit 'can add interests' do
+  it 'can add interests' do
     patron_1.add_interest("Dead Sea Scrolls")
     patron_1.add_interest("Gems and Minerals")
     patron_2.add_interest("IMAX")
