@@ -184,7 +184,7 @@ RSpec.describe 'museum spec' do
       @dmns.admit(@morgan)
     end
 
-    it '12. Museum #patrons_of_exhibits' do
+    it '11. Museum #patrons_of_exhibits' do
       expected = {
         @gems_and_minerals => [@morgan],
         @dead_sea_scrolls => [@bob, @morgan],
@@ -194,14 +194,14 @@ RSpec.describe 'museum spec' do
       expect(@dmns.patrons_of_exhibits).to eq(expected)
     end
 
-    it '13. Museum #admit reduces spending money' do
+    it '12. Museum #admit reduces spending money' do
       expect(@tj.spending_money).to eq(7)
       expect(@bob.spending_money).to eq(0)
       expect(@sally.spending_money).to eq(5)
       expect(@morgan.spending_money).to eq(5)
     end
 
-    it '14. Museum #revenue' do
+    it '13. Museum #revenue' do
       expect(@dmns).to respond_to(:revenue).with(0).argument
       expect(@dmns.revenue).to eq(35)
     end
