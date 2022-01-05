@@ -19,7 +19,7 @@ RSpec.describe Museum do
     expect(dmns.name).to eq("Denver Museum of Nature and Science")
   end
 
-  xit 'can have exhibits' do
+  it 'can have exhibits' do
     expect(dmns.exhibits).to eq([])
   end
 
