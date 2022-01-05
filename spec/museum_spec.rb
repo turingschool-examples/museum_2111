@@ -1,6 +1,7 @@
 require 'RSpec'
 require './lib/museum'
 require './lib/exhibit'
+require './lib/patron'
 require 'pry'
 
 RSpec.describe Patron do
