@@ -46,7 +46,42 @@ RSpec.describe Museum do
       expect(dmns.recommend_exhibits(patron_2)).to eq([imax])
     end
   end
+  it 'can record patrons' do
 
+    expect(dmns.patrons).to eq([])
+  end
 
+  it 'can admit patrons' do
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
 
+    expect(dmns.patrons).to eq([patron_1, patron_2, patron_3])
+  end
+   it 'groups patrons by interest in exhibit' do
+     dmns.admit(patron_1)
+     dmns.admit(patron_2)
+     dmns.admit(patron_3)
+
+     expect(dmns.patrons_by_exhibit_interest).to be_a(Hash)
+     expect(dmns.patrons_by_exhibit_interest.keys.first).to eq(gems_and_minerals)
+     expect(dmns.patrons_by_exhibit_interest.keys).to eq([gems_and_minerals, dead_sea_scrolls, imax])
+     expect(dmns.patrons_by_exhibit_interest[gems_and_minerals]).to eq(patron_1)
+     expect(dmns.patrons_by_exhibit_interest[dead_sea_scrolls]).to eq([patron_1, patron_2, patron_3])
+    expect(dmns.patrons_by_exhibit_interest[imax]).to eq([])
+   end
+
+   it '#elgible patrons for lotto ticket' do
+     dmns.admit(patron_1)
+     dmns.admit(patron_2)
+     dmns.admit(patron_3)
+
+     expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq([patron_1, patron_3])
+   end
+
+   it 'can select a winner' do
+     dmns.admit(patron_1)
+     dmns.admit(patron_2)
+     dmns.admit(patron_3)
+   end
 end
