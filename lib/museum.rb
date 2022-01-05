@@ -42,4 +42,10 @@ class Museum
       patron.spending_money < exhibit.cost
     end
   end
+
+  def draw_lottery_winner(exhibit)
+    ticket_lottery_contestants(exhibit).map do |patron|
+      patron.name
+    end.sample
+  end
 end
