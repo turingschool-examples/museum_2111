@@ -21,18 +21,14 @@ RSpec.describe do Patron
   it 'has interests' do
     patron_1 = Patron.new("Bob", 20)
 
-    expect(patron_1.ineterests).to eq([])
+    expect(patron_1.interests).to eq([])
   end
 
-  it '' do
-  end
+  it 'can add interests' do
+    patron_1 = Patron.new("Bob", 20)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
 
-  it '' do
-  end
-
-  it '' do
-  end
-
-  it '' do
+    expect(patron_1.interests).to eq([["Dead Sea Scrolls", "Gems and Minerals"]])
   end
 end
