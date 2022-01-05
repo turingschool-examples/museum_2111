@@ -22,4 +22,7 @@ class Museum
     recommendation
   end
 
+  def admit(patron)
+    if patron.spending_money
+  end
 end

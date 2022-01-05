@@ -60,4 +60,13 @@ RSpec.describe do
 
     expect(dmns.patrons).to eq([patron_1, patron_2])
   end
+
+  it "can find the lowest exhibit cost" do
+    dmns.add_exhibit(dead_sea_scrolls)
+    expect(dmns.lowest_cost).to eq 10
+    dmns.add_exhibit(imax)
+    expect(dmns.lowest_cost).to eq 10
+    dmns.add_exhibit(gems_and_minerals)
+    expect(dmns.lowest_cost).to eq 0
+  end
 end
