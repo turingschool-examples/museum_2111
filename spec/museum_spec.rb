@@ -39,20 +39,31 @@ RSpec.describe Museum do
 			before(:each) do
 				@patron1 = Patron.new("Bob", 20)
 				@patron2 = Patron.new("Sally", 20)
+				@patron3 = Patron.new("Johnny", 5)
 				@patron1.add_interest("Dead Sea Scrolls")
 				@patron1.add_interest("Gems and Minerals")
 				@patron2.add_interest("IMAX")
+				@patron1_recs = @museum.recommend_exhibits(@patron1).map(&:name)
+				@patron2_recs = @museum.recommend_exhibits(@patron2).map(&:name)
 			end
 
 			it 'returns an array of recomended exhibits based on a patrons interest' do
-				patron1_recs = @museum.recommend_exhibits(@patron1).map(&:name)
-				patron2_recs = @museum.recommend_exhibits(@patron2).map(&:name)
 				expect(@patron1.interests.all? do |interest|
-					patron1_recs.include?(interest)
+					@patron1_recs.include?(interest)
 				end).to be true
 				expect(@patron2.interests.all? do |interest|
-					patron2_recs.include?(interest)
+					@patron2_recs.include?(interest)
 				end).to be true
+			end
+
+			it 'keeps track of all admitted patrons' do
+				p1 = Patron.new("Bob", 20)
+				p2 = Patron.new("Sally", 20)
+				p3 = Patron.new("Johnny", 5)
+				@museum.admit(p1)
+				@museum.admit(p2)
+				@museum.admit(p3)
+				expect(@museum.patrons).to eq [p1, p2, p3]
 			end
 		end
 	end
