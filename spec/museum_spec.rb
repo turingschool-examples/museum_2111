@@ -14,7 +14,7 @@ RSpec.describe Museum do
   context 'iteration II' do
 
     it "exists" do
-      expect(dmns).to be_an_instance_of Museum
+      expect(dmns).to be_an_instance_of(Museum)
     end
 
     it "has attributes" do
@@ -22,7 +22,7 @@ RSpec.describe Museum do
       expect(dmns.exhibits).to eq([])
     end
 
-    it 'can #add_exhibit'
+    it 'can #add_exhibit' do
 
     expect(dmns.exhibits).to eq([])
     dmns.add_exhibit(gems_and_minerals)
@@ -30,4 +30,5 @@ RSpec.describe Museum do
     dmns.add_exhibit(imax)
     expect(dmns.exhibits.count).to eq(3)
   end
+end
 end
