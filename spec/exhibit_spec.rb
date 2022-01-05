@@ -10,4 +10,8 @@ RSpec.describe do
   it 'has a name' do
     expect(exhibit.name).to eq "Gems and Minerals"
   end
+
+  it "has a cost" do
+    expect(exhibit.cost).to eq 0
+  end
 end
