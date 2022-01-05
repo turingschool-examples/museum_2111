@@ -1,3 +1,6 @@
+require 'RSpec'
+require './lib/patron'
+require 'pry'
 RSpec.describe Patron do
 
   it 'exists' do
