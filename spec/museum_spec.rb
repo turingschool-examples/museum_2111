@@ -88,7 +88,7 @@ RSpec.describe Museum do
     expect(dmns.patrons).to eq([])
   end
 
-  xit "admits patrons" do
+  it "admits patrons" do
     dmns = Museum.new("Denver Museum of Nature and Science")
 
     gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
@@ -253,7 +253,7 @@ RSpec.describe Museum do
     dmns.ticket_lottery_contestants(gems_and_minerals)
 
     dmns.draw_lottery_winner(gems_and_minerals)
-    
+
     expect(dmns.draw_lottery_winner(gems_and_minerals)).to eq(nil)
   end
 
