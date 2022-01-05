@@ -19,14 +19,14 @@ RSpec.describe Exhibit do
     expect(patron_1).to be_instance_of(Patron)
   end
 
-  xit 'patron has money and no interests' do
+  it 'patron has money and no interests' do
     patron_1 = Patron.new("Bob", 20)
     expect(patron_1.name).to eq("Bob")
     expect(patron_1.spending_money).to be 20
     expect(patron_1.interests).to be_empty
   end
 
-  xit 'patron adds interests' do
+  it 'patron adds interests' do
     patron_1 = Patron.new("Bob", 20)
     patron_1.add_interest("Dead Sea Scrolls")
     patron_1.add_interest("Gems and Minerals")
@@ -41,5 +41,10 @@ RSpec.describe Exhibit do
   it 'has a museum' do
     dmns = Museum.new("Denver Museum of Nature and Science")
     expect(dmns.name).to eq("Denver Museum of Nature and Science")
+  end
+
+  it 'has no exhibits initially' do
+    dmns = Museum.new("Denver Museum of Nature and Science")
+    expect(dmns.exhibits).to be_empty
   end
 end
