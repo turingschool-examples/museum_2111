@@ -1,8 +1,8 @@
 class Museum
-  attr_reader :museum_name
+  attr_reader :name
 
-  def initialize(museum_name)
-    @museum_name = museum_name
+  def initialize(name)
+    @name = name
   end
 
-end 
+end
