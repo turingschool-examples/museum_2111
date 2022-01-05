@@ -11,4 +11,18 @@ class Museum
   def add_exhibit(exhibit)
     @exhibits << exhibit
   end
+
+  def recommend_exhibits(patron)
+
+    recommend = []
+
+    @exhibits.each do |exhibit|
+    if exhibit.name.to_s == patron.interests
+      recommend << @exhibits[exhibit]
+
+      # binding.pry
+    end
+    recommend
+  end
+  end
 end
