@@ -16,4 +16,8 @@ RSpec.describe do
   it "can have interests" do
     expect(patron_1.interests).to eq([])
   end
+
+  it "can has spending money" do
+    expect(patron_1.spending_money).to eq 20
+  end
 end
