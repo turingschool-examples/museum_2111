@@ -17,5 +17,14 @@ RSpec.describe Exhibit do
   it 'has a cost' do
     expect(@exhibit.cost).to eq (0)
   end
-
 end
+
+RSpec.describe Patron do
+  before(:each) do
+    @exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    @patron_1 = Patron.new("Bob", 20)
+  end
+
+  it 'exists' do
+    expect(@patron).to be_instance_of Patron
+  end
