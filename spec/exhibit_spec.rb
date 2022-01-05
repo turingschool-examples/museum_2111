@@ -1,7 +1,7 @@
-require './lib/patron'
+require './lib/exhibit'
 require 'rspec'
 
-RSpec.describe Patron do
+RSpec.describe Exhibit do
 
   let(:exhibit) {Exhibit.new({name: "Gems and Minerals", cost: 0})}
 
