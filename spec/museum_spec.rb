@@ -61,7 +61,7 @@ RSpec.describe Museum do
     expect(dmns.recommend_exhibits(patron_2)).to eq([imax])
   end
 
-  xit 'can list' do
+  it 'can list' do
     expect(dmns.patrons).to eq([])
   end
 
