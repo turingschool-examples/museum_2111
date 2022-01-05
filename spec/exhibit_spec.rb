@@ -16,7 +16,7 @@ RSpec.describe Exhibit do
 
         expect(exhibit.name).to eq("Gems and Minerals")
       end
-      
+
       it 'can have a cost' do
         exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
 
@@ -28,5 +28,11 @@ RSpec.describe Exhibit do
 
         expect(patron_1).to be_an_instance_of(Patron)
       end
+
+      it 'can give patrons names' do
+        patron_1 = Patron.new("Bob", 20)
+
+        expect(patron_1.name).to eq("Bob")
+      end
+    end
   end
-end
