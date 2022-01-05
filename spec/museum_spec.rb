@@ -18,7 +18,7 @@ RSpec.describe Patron do
     expect(dmns.name).to eq("Denver Museum of Nature and Science")
   end
 
-  xit 'has no exhibits by default' do
+  it 'has no exhibits by default' do
     dmns = Museum.new("Denver Museum of Nature and Science")
 
     # binding.pry
