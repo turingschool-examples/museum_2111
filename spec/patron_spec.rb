@@ -14,5 +14,16 @@ RSpec.describe Patron do
   it "will recognize patron's spending money" do
     expect(@patron_1.spending_money).to eq(20)
   end
+  describe "Interests" do
+    it 'will initially have no interests' do
+      expect(@patron_1.interests).to eq([])
+    end
+    it 'can add interests with method' do
+      @patron_1.add_interest("Dead Sea Scrolls")
+      @patron_1.add_interest("Gems and Minerals")
+      expect(@patron_1.interests).to eq(["Dead Sea Scrolls", "Gems and Minerals"])
+    end
+  end 
+
 
 end
