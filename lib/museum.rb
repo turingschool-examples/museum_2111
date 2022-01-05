@@ -1,8 +1,9 @@
 class Museum
-  attr_accessor :name, :exhibits
+  attr_accessor :name, :exhibits, :patrons
   def initialize(name)
     @name = name
     @exhibits = []
+    @patrons = []
   end
   def add_exhibit(exhibit)
     @exhibits << exhibit
@@ -17,6 +18,6 @@ class Museum
         end
       end
     end
-    return recc
+    return reccomendations
   end
 end
