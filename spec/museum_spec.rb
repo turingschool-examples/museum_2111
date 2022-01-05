@@ -13,6 +13,11 @@ RSpec.describe Museum do
   it 'will have a name attribute' do
     expect(@dmns.name).to eq('Denver Museum of Nature and Science')
   end
+  describe 'exhibits' do
+    it 'will initially have no exhibits' do
+      expect(@dmns.exhibits).to eq([])
+    end
+  end 
 
 
 
