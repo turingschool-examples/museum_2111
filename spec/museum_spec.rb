@@ -29,10 +29,31 @@ RSpec.describe Museum do
 			@museum.add_exhibit(@imax)
 		end
 
-			it 'contains the Exhibits inside an array' do
-				@museum.exhibits.each do |exhibit|
-					expect(exhibit).to be_instance_of Exhibit
-				end
+		it 'contains the Exhibits inside an array' do
+			@museum.exhibits.each do |exhibit|
+				expect(exhibit).to be_instance_of Exhibit
 			end
+		end
+
+		describe '#recommend_exhibits' do
+			before(:each) do
+				@patron1 = Patron.new("Bob", 20)
+				@patron2 = Patron.new("Sally", 20)
+				@patron1.add_interest("Dead Sea Scrolls")
+				@patron1.add_interest("Gems and Minerals")
+				@patron2.add_interest("IMAX")
+			end
+
+			it 'returns an array of recomended exhibits based on a patrons interest' do
+				patron1_recs = @museum.recommend_exhibits(@patron1).map(&:name)
+				patron2_recs = @museum.recommend_exhibits(@patron2).map(&:name)
+				expect(@patron1.interests.all? do |interest|
+					patron1_recs.include?(interest)
+				end).to be true
+				expect(@patron2.interests.all? do |interest|
+					patron2_recs.include?(interest)
+				end).to be true
+			end
+		end
 	end
 end
