@@ -30,7 +30,7 @@ RSpec.describe Exhibit do
     patron_1 = Patron.new("Bob", 20)
     patron_1.add_interest("Dead Sea Scrolls")
     patron_1.add_interest("Gems and Minerals")
-    expect(patron_1.interests).to eq["Dead Sea Scrolls", "Gems and Minerals"]
+    expect(patron_1.interests).to eq(["Dead Sea Scrolls", "Gems and Minerals"])
   end
 
   it 'has a museum' do
@@ -46,5 +46,6 @@ RSpec.describe Exhibit do
   it 'has no exhibits initially' do
     dmns = Museum.new("Denver Museum of Nature and Science")
     expect(dmns.exhibits).to be_empty
+
   end
 end
