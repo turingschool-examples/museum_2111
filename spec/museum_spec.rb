@@ -36,6 +36,7 @@ RSpec.describe Museum do
       expect(subject.recommend_exhibits(@patron_2)).to eq([@imax])
     end
   end
+
   context "iteration-2" do
     it "#admits patrons" do
       expect(subject.patrons).to eq([])
@@ -44,6 +45,7 @@ RSpec.describe Museum do
       subject.admit(@patron_3)
       expect(subject.patrons).to eq([@patron_1,@patron_2,@patron_3])
     end
+
     it "displays #patrons_by_exhitbit" do
       subject.add_exhibit(@gems_and_minerals)
       subject.add_exhibit(@dead_sea_scrolls)
@@ -59,5 +61,13 @@ RSpec.describe Museum do
               @imax => [@patron_3] }
       expect(subject.patrons_by_exhibit_interest).to eq(hash)
     end
+
+    it "has #ticket_lottery_contestants" do
+      @patron_1.add_interest("Gems and Minerals")
+      @patron_2.add_interest("Dead Sea Scrolls")
+      @patron_3.add_interest("Dead Sea Scrolls")
+      expect(subject.ticket_lottery_contestants(dead_sea_scrolls)).to eq([@patron_2,@patron_3])
+    end
+
   end
 end
