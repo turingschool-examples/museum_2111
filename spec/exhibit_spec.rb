@@ -13,6 +13,11 @@ RSpec.describe 'exhibit' do
     expect(@exhibit).to be_a(Exhibit)
   end
 
-  
+  it "has a name" do
+    expect(@exhibit.name).to eq("Gems and Minerals")
+
+  end
+
+
 
 end
