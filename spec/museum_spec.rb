@@ -15,7 +15,7 @@ RSpec.describe Museum do
     expect(dmns).to be_a(Museum)
   end
 
-  xit 'has a name' do
+  it 'has a name' do
     expect(dmns.name).to eq("Denver Museum of Nature and Science")
   end
 
