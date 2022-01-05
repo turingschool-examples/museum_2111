@@ -26,5 +26,9 @@ class Museum
     recommended_exhibits.uniq
   end
 
+  def admit(patron)
+    @patrons << patrons
+  end
+
 
 end
