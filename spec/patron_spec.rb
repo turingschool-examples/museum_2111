@@ -13,9 +13,15 @@ RSpec.describe Patron do
 		expect(@patron.spending_money).to eq 20
 	end
 
-	it '' do
+	it 'can hold a collection of interests' do
+		expect(@patron.interests).to be_instance_of Array
+	  expect(@patron.interests).to be_empty
 	end
 
-	it '' do
+	it 'can add interests' do
+		@patron.add_interest("Dead Sea Scrolls")
+		@patron.add_interest("Gems and Minerals")
+
+		expect(@patron.interests).to eq ["Dead Sea Scrolls", "Gems and Minerals"]
 	end
 end
