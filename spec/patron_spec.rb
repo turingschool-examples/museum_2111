@@ -1,4 +1,6 @@
-RSpec.describe Card do
+require './lib/patron'
+
+RSpec.describe Patron do
   describe "exists" do
     it "patron exists" do
       patron_1 = Patron.new("Bob", 20)
@@ -10,5 +12,12 @@ RSpec.describe Card do
     end
 
     it "shows patrons interests" do
+      patron_1 = Patron.new("Bob", 20)
+
+      patron_1.add_interest("Dead Sea Scrolls")
+      patron_1.add_interest("Gems and Minerals")
+
+      expect(patron_1.interests).to eq(["Dead Sea Scrolls", "Gems and Minerals"])
+    end
   end
 end
