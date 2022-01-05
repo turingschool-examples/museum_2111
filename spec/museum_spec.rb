@@ -47,7 +47,7 @@ RSpec.describe Museum do
     #expect(dmns.recommend_exhibits(patron_2)).to eq([imax])
   end
 
-  it 'patron add interest' do
+  it 'patron add interest is an empty array' do
     dmns = Museum.new("Denver Museum of Nature and Science")
     gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
