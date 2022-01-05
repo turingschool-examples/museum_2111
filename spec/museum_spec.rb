@@ -1,5 +1,6 @@
 require './lib/patron'
 require './lib/exhibit'
+require './lib/museum'
 require 'rspec'
 require 'pry'
 
@@ -10,7 +11,7 @@ RSpec.describe Museum do
   context 'iteration II' do
 
     it "exists" do
-      expect(exhibit).to be_a Exhibit
+      expect(dmns).to be_an_instance_of Museum
     end
   end
 end
