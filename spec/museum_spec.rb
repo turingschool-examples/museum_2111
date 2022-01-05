@@ -69,5 +69,12 @@ RSpec.describe Museum do
       expect(subject.ticket_lottery_contestants(dead_sea_scrolls)).to eq([@patron_2,@patron_3])
     end
 
+    it "can #draw_lottery_winner" do
+      @patron_1.add_interest("Gems and Minerals")
+      @patron_2.add_interest("Dead Sea Scrolls")
+      @patron_3.add_interest("Dead Sea Scrolls")
+      expect(subject.draw_lottery_winner(dead_sea_scrolls)).to eq(@patron_2.name || @patron_3.name)
+      expect(subject.draw_lottery_winner(gems_and_minerals)).to eq(nil)
+    end
   end
 end
