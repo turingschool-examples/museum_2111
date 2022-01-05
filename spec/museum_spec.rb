@@ -102,8 +102,6 @@ RSpec.describe do
     dmns.admit(patron_2)
     dmns.admit(patron_3)
 
-    expect(dmns.patrons_by_exhibit_interest).to eq({gems_and_minerals: [patron_1],
-    dead_sea_scrolls: [patron_1, patron_2, patron_3],
-    imax: []})
+    expect(dmns.patrons_by_exhibit_interest.keys).to eq([gems_and_minerals, dead_sea_scrolls, imax])
   end
 end
