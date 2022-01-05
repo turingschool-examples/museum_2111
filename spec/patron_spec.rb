@@ -1,15 +1,16 @@
 # require './lib/exhibit'
 require './lib/patron'
+require 'rspec'
+
 
 RSpec.describe Patron do
 
-
-let(:patron_1) {Patron.new("Charlie", 20)}
+  let(:patron_1) {Patron.new("Charlie", 20)}
 
   context 'iteration I' do
     it 'exists' do
 
-      expect(parton_1).to be_instance_of(Patron)
+      expect(patron_1).to be_a Patron
     end
   end
 end
