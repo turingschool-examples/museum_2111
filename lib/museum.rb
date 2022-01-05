@@ -16,6 +16,10 @@ class Museum
   end
 
   def admit(patron)
-    @patrons << patron 
+    @patrons << patron
+  end
+
+  def patrons_by_interest
+
   end
 end
