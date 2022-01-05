@@ -18,14 +18,14 @@ RSpec.describe Museum do
       expect(subject.exhibits).to eq([])
     end
 
-    it "can add exhibits" do
+    it "can #add_exhibits" do
       subject.add_exhibit(@gems_and_minerals)
       subject.add_exhibit(@dead_sea_scrolls)
       subject.add_exhibit(@imax)
       expect(subject.exhibits).to eq([@gems_and_minerals, @dead_sea_scrolls, @imax])
     end
 
-    it "recommends exhibits based on patron interests" do
+    it "#recommend_exhibits based on patron interests" do
       subject.add_exhibit(@gems_and_minerals)
       subject.add_exhibit(@dead_sea_scrolls)
       subject.add_exhibit(@imax)
@@ -37,12 +37,27 @@ RSpec.describe Museum do
     end
   end
   context "iteration-2" do
-    it "admits patrons" do
+    it "#admits patrons" do
       expect(subject.patrons).to eq([])
       subject.admit(@patron_1)
       subject.admit(@patron_2)
       subject.admit(@patron_3)
       expect(subject.patrons).to eq([@patron_1,@patron_2,@patron_3])
+    end
+    it "displays #patrons_by_exhitbit" do
+      subject.add_exhibit(@gems_and_minerals)
+      subject.add_exhibit(@dead_sea_scrolls)
+      subject.add_exhibit(@imax)
+      subject.admit(@patron_1)
+      subject.admit(@patron_2)
+      subject.admit(@patron_3)
+      @patron_1.add_interest("Gems and Minerals")
+      @patron_2.add_interest("Dead Sea Scrolls")
+      @patron_3.add_interest("Dead Sea Scrolls")
+      hash = { @gems_and_minerals => [@patron_1],
+              @dead_sea_scrolls => [@patron_2],
+              @imax => [@patron_3] }
+      expect(subject.patrons_by_exhibit_interest).to eq(hash)
     end
   end
 end
