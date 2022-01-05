@@ -26,7 +26,7 @@ RSpec.describe Exhibit do
   expect(patron_1.name).to eq("Bob")
   end
 
-  xit 'has money to blow' do
+  it 'has money to blow' do
     expect(patron_1.spending_money).to eq(20)
   end
 
