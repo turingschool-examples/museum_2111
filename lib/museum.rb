@@ -36,5 +36,9 @@ class Museum
     end
   end
 
-  
+  def patrons_by_exhibit_interest
+    @patrons.group_by do |patron|
+      patron.interests
+    end
+  end
 end

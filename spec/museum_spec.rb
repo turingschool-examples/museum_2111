@@ -85,8 +85,9 @@ RSpec.describe do
     expectation = {
       gems_and_minerals => [patron_1],
       dead_sea_scrolls => [patron_1, patron_2, patron_3],
-      imax => [imax]
+      imax => []
     }
+    binding.pry
     expect(dmns.patrons_by_exhibit_interest).to eq(expectation)
   end
 end
