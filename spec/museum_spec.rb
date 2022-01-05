@@ -38,7 +38,7 @@ RSpec.describe Patron do
     expect(dmns.exhibits).to eq([gems_and_minerals, dead_sea_scrolls, imax])
   end
 
-  xit 'can recommend exhibits to patrons' do
+  it 'can recommend exhibits to patrons' do
     dmns = Museum.new("Denver Museum of Nature and Science")
     gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
