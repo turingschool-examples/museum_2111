@@ -9,7 +9,11 @@ RSpec.describe Museum do
   end
   it 'will create an instance of Museum' do
     expect(@dmns).to be_instance_of(Museum)
-  end 
+  end
+  it 'will have a name attribute' do
+    expect(@dmns.name).to eq('Denver Museum of Nature and Science')
+  end
+
 
 
 end
