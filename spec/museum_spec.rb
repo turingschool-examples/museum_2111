@@ -190,6 +190,7 @@ RSpec.describe Museum do
     bob_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [patron_1], imax => []}
     expect(dmns.patrons_of_exhibits).to eq(bob_exhibits)
     expect(patron_1.spending_money).to eq(0)
+    expect(dmns.revenue).to eq(10)
   end
 
   xit 'patrons will attend the more expensive exhibit first' do
