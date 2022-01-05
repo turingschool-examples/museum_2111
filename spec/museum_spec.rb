@@ -44,4 +44,7 @@ RSpec.describe Museum do
       expect(@dmns.reccomended_exhibits(@patron_2)).to eq([@imax])
     end
   end
+  it 'initially has no patrons' do
+    expect(@dmns.patrons).to eq([])
+  end 
 end

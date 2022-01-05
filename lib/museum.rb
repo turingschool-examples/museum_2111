@@ -17,6 +17,6 @@ class Museum
         end
       end
     end
-    return reccomendations
+    return recc
   end
 end
