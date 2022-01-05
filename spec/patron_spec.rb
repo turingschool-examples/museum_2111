@@ -18,7 +18,9 @@ RSpec.describe 'patron' do
 
   it "spending money" do
     expect(@patron_1.spending_money).to eq(20)
-
   end
 
+  it "has innterests" do
+    expect(@patron_1.interests).to eq([])
+  end
 end
