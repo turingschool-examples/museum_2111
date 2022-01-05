@@ -25,7 +25,7 @@ RSpec.describe Patron do
     expect(dmns.exhibits).to eq([])
   end
 
-  xit 'can add exhibits' do
+  it 'can add exhibits' do
     dmns = Museum.new("Denver Museum of Nature and Science")
     gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
