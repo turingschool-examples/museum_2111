@@ -31,9 +31,18 @@ RSpec.describe Museum do
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
+    @patron_1 = Patron.new("Bob", 20)
+    @patron_1.add_interest("Dead Sea Scrolls")
+    @patron_1.add_interest("Gems and Minerals")
+    @patron_2 = Patron.new("Sally", 20)
+    @patron_2.add_interest("IMAX")
   end
 
   it 'has exhibits - yields array full of exhibit objects' do
   expect(@dmns.exhibits).to eq([@gems_and_minerals, @dead_sea_scrolls, @imax])
+  end
+
+  it 'recommends exhibit to equal gems and dead sea for Patron 1' do
+  expect(@dmns.recommend_exhibits(patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
   end
 end
