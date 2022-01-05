@@ -1,3 +1,4 @@
+require 'pry'
 class Museum
   attr_reader :name, :exhibits
 
@@ -10,6 +11,14 @@ class Museum
     @exhibits << exhibit
   end
 
-
+  def recommend_exhibits(patron)
+    recommendation = []
+    @exhibits.each do |exhibit|
+      if patron.interests.any?(exhibit.name)
+        recommendation << exhibit
+      end
+    end
+    recommendation
+  end
 
 end
