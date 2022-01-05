@@ -1,7 +1,7 @@
 require './lib/museum'
 require './lib/exhibit'
 require './lib/patron'
-
+require 'pry'
 RSpec.describe do
   let(:dmns) {Museum.new("Denver Museum of Nature and Science")}
   let(:gems_and_minerals) {Exhibit.new({name: "Gems and Minerals", cost: 0})}
@@ -19,14 +19,15 @@ RSpec.describe do
   end
 
   it "can have exhibits" do
-    expect(dmns.exhibits).to eq [gems_and_minerals, dead_sea_scrolls, imax]
+    #binding.pry
+    expect(dmns.exhibits).to eq([])
   end
 
   it "can add exhibits" do
     dmns.add_exhibit(gems_and_minerals)
     dmns.add_exhibit(dead_sea_scrolls)
     dmns.add_exhibit(imax)
-    
-    expect(dmns.exhibits).to eq[]
+
+    expect(dmns.exhibits).to eq [gems_and_minerals, dead_sea_scrolls, imax]
   end
 end
