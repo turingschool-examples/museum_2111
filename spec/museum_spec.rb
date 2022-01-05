@@ -14,6 +14,6 @@ RSpec.describe Museum do
   end
 
   it 'has name' do
-    expect(@dmns).to eq("Denver Museum of Nature and Science")
+    expect(@dmns.name).to eq("Denver Museum of Nature and Science")
   end
 end
