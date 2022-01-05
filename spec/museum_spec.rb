@@ -65,5 +65,10 @@ RSpec.describe Museum do
 
     expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
   end
-  
+
+  it '#patrons_by_exhibit_interest' do
+
+    expect(@dmns.patrons_by_exhibit_interest).to be_a(Hash)
+  end
+
 end
