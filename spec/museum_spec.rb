@@ -20,14 +20,20 @@ RSpec.describe Museum do
   it 'has exhibits - yields empty array' do
     expect(@dmns.exhibits).to eq([])
   end
+end
+
+RSpec.describe Museum do
+  before(:each) do
+    @dmns = Museum.new("Denver Museum of Nature and Science")
+    @gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    @dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    @imax = Exhibit.new({name: "IMAX",cost: 15})
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+  end
 
   it 'has exhibits - yields array full of exhibit objects' do
-    gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
-    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
-    imax = Exhibit.new({name: "IMAX",cost: 15})
-    @dmns.add_exhibit(gems_and_minerals)
-    @dmns.add_exhibit(dead_sea_scrolls)
-    @dmns.add_exhibit(imax)
-    expect(@dmns.exhibits).to eq([gems_and_minerals, dead_sea_scrolls, imax])
+  expect(@dmns.exhibits).to eq([@gems_and_minerals, @dead_sea_scrolls, @imax])
   end
 end
