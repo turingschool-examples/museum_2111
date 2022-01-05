@@ -19,4 +19,10 @@ RSpec.describe Patron do
       expect(patron.spending_money). to eq(20)
     end
 
+    it 'can #add_interests' do
+
+      expect(patron_1.interests).to eq([])
+      patron_1.add_interest("Dead Sea Scrolls")
+      expect(patron_1.interests).to eq(["Dead Sea Scrolls"])
+    end
 end
