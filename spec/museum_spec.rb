@@ -39,15 +39,15 @@ RSpec.describe Museum do
   end
 
   it 'has exhibits - yields array full of exhibit objects' do
-  expect(@dmns.exhibits).to eq([@gems_and_minerals, @dead_sea_scrolls, @imax])
+    expect(@dmns.exhibits).to eq([@gems_and_minerals, @dead_sea_scrolls, @imax])
   end
 
   it 'recommends exhibit to equal gems and dead sea for Patron 1' do
-  expect(@dmns.recommend_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
+    expect(@dmns.recommend_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
   end
 
   it 'has patrons yields empty array' do
-  expect(@dmns.patrons).to eq([])
+    expect(@dmns.patrons).to eq([])
   end
 end
 
@@ -73,7 +73,15 @@ RSpec.describe Museum do
   end
 
   it 'admit method works - has patrons yields full array' do
-  expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
+    expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
   end
 
+  it 'patrons by exhibit interest yields hash of exhibit keys with patrons as values' do
+  expected = {
+    @gems_and_minerals => [@patron_1],
+    @dead_sea_scrolls => [@patron_1, @patron_2, @patron_3],
+    @imax => []
+  }
+    expect(@dmns.patrons_by_exhibit_interest).to eq(expected)
+  end
 end
