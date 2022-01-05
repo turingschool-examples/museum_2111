@@ -165,4 +165,19 @@ RSpec.describe Museum do
       expect(dmns.draw_lottery_winner(dead_sea_scrolls)).to eq("Johnny").or eq("Bob")
       expect(dmns.draw_lottery_winner(gems_and_minerals)).to eq(nil)
     end
+
+    xit 'can find patrons interests and exhibits that they can afford' do
+      dmns = Museum.new("Denver Museum of Nature and Science")
+      gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+      imax = Exhibit.new({name: "IMAX",cost: 15})
+      dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+      dmns.add_exhibit(gems_and_minerals)
+      dmns.add_exhibit(imax)
+      dmns.add_exhibit(dead_sea_scrolls)
+      tj = Patron.new("TJ", 7)
+      tj.add_interest("IMAX")
+      tj.add_interest("Dead Sea Scrolls")
+      dmns.admit(tj)
+      expect(tj.spending_money).to eq(7)
+    end
   end
