@@ -219,8 +219,38 @@ RSpec.describe Museum do
     patron_2.add_interest("Dead Sea Scrolls")
     dmns.admit(patron_2)
     sally_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [patron_1], imax => [patron_2]}
-    require 'pry'; binding.pry
     expect(dmns.patrons_of_exhibits).to eq(sally_exhibits)
     expect(patron_2.spending_money).to eq(5)
+  end
+
+  it 'patrons can attend multiple exhibits if they can afford all' do
+    dmns = Museum.new("Denver Museum of Nature and Science")
+    gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    imax = Exhibit.new({name: "IMAX",cost: 15})
+    dmns.add_exhibit(gems_and_minerals)
+    dmns.add_exhibit(dead_sea_scrolls)
+    dmns.add_exhibit(imax)
+    tj = Patron.new("TJ", 7)
+    tj.add_interest("IMAX")
+    tj.add_interest("Dead Sea Scrolls")
+    dmns.admit(tj)
+    expect(tj.spending_money).to eq(7)
+    empty_exhibits = {gems_and_minerals => [], dead_sea_scrolls => [], imax => []}
+    expect(dmns.patrons_of_exhibits).to eq(empty_exhibits)
+
+    patron_1 = Patron.new("Bob", 10)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("IMAX")
+    dmns.admit(patron_1)
+
+    morgan = Patron.new("Morgan", 15)
+    morgan.add_interest("Gems and Minerals")
+    morgan.add_interest("Dead Sea Scrolls")
+    dmns.admit(morgan)
+    morgan.spending_money
+    morgan_exhibits = {gems_and_minerals => [morgan], dead_sea_scrolls => [patron_1, morgan], imax => []}
+
+    expect(dmns.patrons_of_exhibits).to eq(morgan_exhibits)
   end
 end
