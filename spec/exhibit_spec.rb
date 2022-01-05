@@ -19,9 +19,6 @@ RSpec.describe 'exhibit' do
 
   it "has a cost" do
     expect(@exhibit.cost).to eq(0)
-
   end
-
-
 
 end
