@@ -5,5 +5,4 @@ class Exhibit
     @name = info[:name]
     @cost = info[:cost]
   end
-  
 end
