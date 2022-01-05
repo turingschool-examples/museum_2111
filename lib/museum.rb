@@ -5,6 +5,7 @@ class Museum
     @name = name
     @exhibits = []
     @patrons =[]
+    @exhibit_by_interest = {}
   end
 
   def add_exhibit(exhibit)
@@ -26,4 +27,8 @@ class Museum
     def admit(patron)
       @patrons.push(patron)
     end
+
+  
+
+
   end

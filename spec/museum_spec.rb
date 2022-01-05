@@ -79,7 +79,7 @@ RSpec.describe Museum do
     expect(dmns.patrons).to eq([patron_1, patron_2, patron_3])
   end
 
-  xit 'can add exhibits to museum' do
+  xit 'can check exhibits by interest' do
     dmns.add_exhibit(gems_and_minerals)
     dmns.add_exhibit(dead_sea_scrolls)
     dmns.add_exhibit(imax)
@@ -96,6 +96,7 @@ RSpec.describe Museum do
       dead_sea_scrolls => [patron_1, patron_2, patron_3],
       imax => []
     }
+
     expect(dmns.patrons_by_exhibit_interest).to eq(expected)
   end
 
