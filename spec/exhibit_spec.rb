@@ -9,3 +9,4 @@ RSpec.describe Exhibit do
   it 'exists' do
     expect(@exhibit).to be_instance_of Exhibit
   end
+end
