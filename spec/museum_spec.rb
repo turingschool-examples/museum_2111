@@ -54,7 +54,16 @@ RSpec.describe Museum do
     @patron_2.add_interest("Dead Sea Scrolls")
 
     @patron_3.add_interest("Dead Sea Scrolls")
-    
+
     expect(@dmns.patrons).to eq([])
   end
+
+  it 'admits patrons into the museum' do
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+
+    expect(@dmns.patrons).to eq([@patron_1, @patron_2, @patron_3])
+  end
+  
 end
