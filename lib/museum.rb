@@ -41,4 +41,9 @@ class Museum
       patron.spending_money < exhibit.cost ? patron : next
     end.compact
   end
+
+  def draw_lottery_winner(exhibit)
+    winner = ticket_lottery_contestants(exhibit).sample
+    winner == nil ? nil : winner.name
+  end
 end
