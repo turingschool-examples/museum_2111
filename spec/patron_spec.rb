@@ -12,7 +12,10 @@ RSpec.describe do Patron
     expect(patron_1.name).to eq('Bob')
   end
 
-  it '' do
+  it 'has spending money' do
+    patron_1 = Patron.new("Bob", 20)
+
+    expect(patron_1.spending_money).to be(20)
   end
 
   it '' do
