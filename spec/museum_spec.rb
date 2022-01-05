@@ -9,6 +9,8 @@ RSpec.describe Museum do
     @gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
     @dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
     @imax = Exhibit.new({name: "IMAX",cost: 15})
+    @patron_1 = Patron.new("Bob", 20)
+    @patron_2 = Patron.new("Sally", 20)
   end
   it 'will create an instance of Museum' do
     expect(@dmns).to be_instance_of(Museum)
@@ -28,9 +30,14 @@ RSpec.describe Museum do
       @dmns.add_exhibit(@gems_and_minerals)
       @dmns.add_exhibit(@dead_sea_scrolls)
       expect(@dmns.exhibits).to eq([@imax, @gems_and_minerals, @dead_sea_scrolls])
-    end 
+    end
   end
-
-
-
+  describe 'Reccomendations' do
+    it 'will provide reccomendations to patrons' do
+      @patron_1.add_interest("Dead Sea Scrolls")
+      @patron_1.add_interest("Gems and Minerals")
+      @patron_2.add_interest("IMAX")
+      expect(@dmns.reccomended_exhibits(@patron_1)).to eq([@gems_and_minerals, @dead_sea_scrolls])
+    end
+  end
 end
