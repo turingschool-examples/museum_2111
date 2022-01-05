@@ -36,7 +36,7 @@ RSpec.describe Museum do
     expect(dmns.exhibits).to eq([gems_and_minerals, dead_sea_scrolls, imax])
   end
 
-  xit 'exists' do
+  it 'exists' do
     expect(patron_1).to be_a(Patron)
     expect(patron_2).to be_a(Patron)
     expect(patron_3).to be_a(Patron)
