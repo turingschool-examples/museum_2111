@@ -9,6 +9,7 @@ RSpec.describe Museum do
 
   let(:patron_1) {Patron.new("Bob", 0)}
   let(:patron_2) {Patron.new("Sally", 20)}
+  let(:patron_3) {Patron.new("Johnny", 5)}
 
   let(:dmns) {Museum.new("Denver Museum of Nature and Science")}
 
@@ -45,5 +46,7 @@ RSpec.describe Museum do
       expect(dmns.recommend_exhibits(patron_2)).to eq([imax])
     end
   end
+
+
 
 end
