@@ -22,7 +22,7 @@ RSpec.describe Exhibit do
   expect(patron_1).to be_a(Patron)
   end
 
-  xit 'has a name' do
+  it 'has a name' do
   expect(patron_1.name).to eq("Bob")
   end
 
