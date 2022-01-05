@@ -252,5 +252,6 @@ RSpec.describe Museum do
     morgan_exhibits = {gems_and_minerals => [morgan], dead_sea_scrolls => [patron_1, morgan], imax => []}
 
     expect(dmns.patrons_of_exhibits).to eq(morgan_exhibits)
+    expect(dmns.revenue).to eq(20)
   end
 end
