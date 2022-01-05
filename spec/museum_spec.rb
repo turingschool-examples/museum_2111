@@ -1,4 +1,7 @@
 require './lib/museum'
+require './lib/patron'
+require './lib/exhibit'
+
 RSpec.describe do
   it 'exists' do
     dmns = Museum.new("Denver Museum of Nature and Science")
@@ -60,5 +63,19 @@ RSpec.describe do
 
 
     expect(dmns.recommend_exhibits(patron_2)).to eq([imax])
+  end
+
+  it 'has patrons' do
+    dmns = Museum.new("Denver Museum of Nature and Science")
+
+    expect(dmns.patrons).to eq([])
+  end
+
+  it 'admits patrons' do
+    dmns = Museum.new("Denver Museum of Nature and Science")
+    patron_1 = Patron.new("Bob", 0)
+    patron_2 = Patron.new("Sally", 20)
+    patron_3 = Patron.new("Johnny", 5)
+    expect(dmns.patrons).to eq([patron_1, patron_2, patron_3])
   end
 end
